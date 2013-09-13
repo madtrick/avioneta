@@ -1,1 +1,6 @@
 .sass-cache/
+spec/javascripts/*
+!spec/javascripts/helpers/
+!spec/javascripts/support/
+public/assets/*
+!public/assets/require.js
