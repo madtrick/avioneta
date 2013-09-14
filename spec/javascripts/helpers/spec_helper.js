@@ -1,7 +1,6 @@
 /*
  * Little snippet to make Jasmine and RequireJS play nice together.
  *
- * 
  * */
 (function(){
   var originalRequire        = require;

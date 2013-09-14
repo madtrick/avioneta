@@ -5,4 +5,4 @@ define ['avioneta/painters'], (Painters) ->
 
     paint : (player) ->
       @_canvas.fillStyle = "#000"
-      @_canvas.fillRect(player.x, player.y, 10, 10)
+      @_canvas.fillRect(player.x, player.y, player.width, player.height)
