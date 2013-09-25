@@ -8,7 +8,11 @@ define ['avioneta/components'], (Components) ->
     addPlayer : (player) ->
       @players.push player
 
-    update : ->
+    getPlayer : (playerId) ->
+      _.find @players, (player) -> player.id is playerId
+
+    update : (commands) ->
+      commands.forEach (command) => command.run(@)
       @players.forEach @_consolidatePlayer
       @players.forEach (p) => p.shots.forEach @_consolidateShot
 
@@ -35,5 +39,3 @@ define ['avioneta/components'], (Components) ->
 
       if shot.y + shot.height > @height
         shot.active = false
-
-

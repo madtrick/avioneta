@@ -1,8 +1,9 @@
 define [
   'avioneta',
   'avioneta/painters/player_painter',
-  'avioneta/painters/shot_painter'
-  ], (Avioneta, PlayerPainter, ShotPainter) ->
+  'avioneta/painters/shot_painter',
+  'avioneta/services/command_sync'
+  ], (Avioneta, PlayerPainter, ShotPainter, CommandSync) ->
     class Avioneta.GUI
       #
       # This game loop is strongly based
@@ -33,7 +34,7 @@ define [
 
         @_loops = 0
         while @_getTickCount() > @_nextGameTick and @_loops < MAX_FRAMESKIP
-          @update()
+          CommandSync.push @update()
           @_nextGameTick += SKIP_TICKS
           @_loops += 1
 
@@ -53,12 +54,9 @@ define [
         #    @_shotPainter.paint(shot)
 
       update : ->
-        @_arena.players.forEach (player) ->
-          player.update()
-          player.shots.forEach (shot) ->
-            shot.update()
-
-        @_arena.update()
+        commands = _.flatten @_arena.players.map (player) -> player.update()
+        @_arena.update(commands)
+        commands
 
       _getTickCount : ->
         Date.now() - @_initialTickCount
