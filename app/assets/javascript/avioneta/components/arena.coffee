@@ -1,4 +1,4 @@
-define ['avioneta/components'], (Components) ->
+define ['underscore','avioneta/components'], (_, Components) ->
   class Components.Arena
     constructor : (attrs) ->
       @width  = attrs.width
@@ -8,14 +8,15 @@ define ['avioneta/components'], (Components) ->
     addPlayer : (player) ->
       @players.push player
 
+    removePlayer : (player) ->
+      @players = _.reject(@players, (e) -> e is player)
+
     getPlayer : (playerId) ->
       _.find @players, (player) -> player.id is playerId
 
-    update : (commands) ->
-      commands.forEach (command) => command.run(@)
+    update : () ->
       @players.forEach @_consolidatePlayer
       @players.forEach (p) => p.shots.forEach @_consolidateShot
-
 
     _consolidatePlayer : (player) =>
       if player.x < 0

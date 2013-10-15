@@ -6,26 +6,31 @@ define ['avioneta/services'], (Services) ->
       @_connection()
 
     @push : (commands) ->
-      return if commands.length is 0
+      return unless commands
       return @_queue_commands commands unless @_ready
 
-      @_connection().send @_prepareCommands(commands)
-      @_connection.onmessage = (m) -> console.log m
+      @_connection().send commands
 
-    @_prepareCommands : (commands) ->
-      JSON.stringify commands
+    @get : (collection) ->
+      return if @_incomming_queue().length is 0
+      @_incomming_queue().forEach (message) -> collection.push message
+      @_incomming_queue_ = []
+      collection
 
     @_connection : ->
       @_websocket ||= new WebSocket(SERVER_URL)
       @_websocket.onopen = @_handleOnOpen
+      @_websocket.onmessage = (message) => @_incomming_queue().push message.data
       @_websocket
 
     @_queue_commands : (commands) ->
-      commands.forEach (command) =>
-        @_commands_queue().push command
+      @_commands_queue().push commands
 
     @_commands_queue : ->
       @_commands_queue_ ||= []
+
+    @_incomming_queue: ->
+      @_incomming_queue_  ||= []
 
     @_handleOnOpen : =>
       @_ready = true

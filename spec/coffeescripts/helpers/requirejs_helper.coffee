@@ -19,4 +19,8 @@ requiresCounter        = 0
   originalRequire.call this, deps, newCallback
 
   @jasmine.getEnv().execute = ->
-  originalRequire.config(baseUrl : "http://localhost:8000/public/assets/")
+  originalRequire.config
+    baseUrl : "http://localhost:8000/public/assets/"
+    shim :
+      underscore :
+        exports : '_'

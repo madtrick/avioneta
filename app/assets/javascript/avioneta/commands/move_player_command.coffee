@@ -1,10 +1,11 @@
-define ['avioneta/commands'], (Commands) ->
-  class Commands.MovePlayerCommand
-    constructor : (@options) ->
+define [
+  'underscore',
+  'avioneta/commands',
+  'avioneta/commands/base_command'
+], (_, Commands, BaseCommand) ->
+  class Commands.MovePlayerCommand extends BaseCommand
+    constructor : (options) ->
+      super _.extend {}, data : options, name : "MovePlayerCommand"
 
     run : (arena) ->
-      arena.getPlayer(@options.player)[@options.axis] += @options.value
-
-    toJSON : ->
-      command : "MovePlayerCommand", options : @options
-
+      arena.getPlayer(@data().player)[@data().axis] += @data().value
