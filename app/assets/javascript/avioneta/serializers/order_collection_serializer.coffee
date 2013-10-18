@@ -1,9 +1,15 @@
 define [
+  'avioneta/collections/order_collection',
   'avioneta/serializers',
   'avioneta/serializers/register_player_order_serializer',
   'avioneta/serializers/disconnect_player_order_serializer',
-  'avioneta/collections/order_collection'
-], (Serializers, RegisterPlayerOrderSerializer, DisconnectPlayerOrderSerializer, OrderCollection) ->
+  'avioneta/serializers/move_player_order_serializer'
+], (OrderCollection, Serializers) ->
+#  'avioneta/serializers',
+#  'avioneta/serializers/register_player_order_serializer',
+#  'avioneta/serializers/disconnect_player_order_serializer',
+#  'avioneta/collections/order_collection'
+#], (Serializers, RegisterPlayerOrderSerializer, DisconnectPlayerOrderSerializer, OrderCollection) ->
   class Serializers.OrderCollectionSerializer
     constructor : (@collection) ->
 
