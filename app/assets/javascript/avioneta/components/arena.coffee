@@ -16,6 +16,7 @@ define ['underscore','avioneta/components'], (_, Components) ->
 
     update : () ->
       @players.forEach @_consolidatePlayer
+      @players.forEach (p) => p.shots.forEach @_updateShot
       @players.forEach (p) => p.shots.forEach @_consolidateShot
 
     _consolidatePlayer : (player) =>
@@ -31,7 +32,11 @@ define ['underscore','avioneta/components'], (_, Components) ->
       if player.y + player.height > @height
         player.y = @height - player.height
 
+    _updateShot : (shot) =>
+      shot.y += 1
+
     _consolidateShot : (shot) =>
+      console.log "consolidating shot"
       if shot.x < 0 or shot.y < 0
         shot.active = false
 

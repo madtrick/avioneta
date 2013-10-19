@@ -50,6 +50,7 @@ define [
         @_arena.players.forEach (player) =>
           @_playerPainter.paint(player)
           player.shots.forEach (shot) =>
+            console.log "shit"
             @_shotPainter.paint(shot)
 
         #@_arena.players.forEach (player) =>

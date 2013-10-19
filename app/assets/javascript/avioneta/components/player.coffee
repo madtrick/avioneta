@@ -4,8 +4,9 @@ define [
   'avioneta/components/shot',
   'avioneta/serializers/player_serializer',
   'avioneta/commands/move_player_command'
+  'avioneta/commands/shoot_player_command'
   'input'],
-  (Components, BaseComponent, Shot, PlayerSerializer, MovePlayerCommand, input) ->
+  (Components, BaseComponent, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input) ->
 
     class Components.Player extends BaseComponent
       serializer : PlayerSerializer
@@ -27,6 +28,13 @@ define [
         @shots = []
 
       update : ->
+        _shots = []
+        @shots.forEach (shot) ->
+          if shot.active
+            _shots.push shot
+
+        @shots = _shots
+
         return if @remote
         #commands = []
         if input.isDown 'DOWN'
@@ -41,15 +49,10 @@ define [
         if input.isDown 'RIGHT'
           command = new MovePlayerCommand player : @id, axis : "x", value : 1
 
-        _shots = []
-        @shots.forEach (shot) ->
-          if shot.active
-            _shots.push shot
-
-        @shots = _shots
 
         if input.isDown 'SPACE'
-          @shots.push(new Shot x : @x, y : @y)
+          command = new ShootPlayerCommand player : @id, x : @x, y : @y
+          #@shots.push(new Shot x : @x, y : @y)
 
         command
 
