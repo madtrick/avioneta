@@ -48,13 +48,13 @@ define [
       render : ->
         @_canvas.clearRect(0, 0, @_arena.width, @_arena.height)
         @_arena.players.forEach (player) =>
-          @_playerPainter.paint(player)
+          player.paint(@_canvas)
+          #@_playerPainter.paint(player)
           player.shots.forEach (shot) =>
-            console.log "shit"
             @_shotPainter.paint(shot)
 
+        #@_canvas.clearRect(0, 0, @_arena.width, @_arena.height)
         #@_arena.players.forEach (player) =>
-        #  player.update()
         #  @_playerPainter.paint(player)
         #  player.shots.forEach (shot) =>
         #    @_shotPainter.paint(shot)

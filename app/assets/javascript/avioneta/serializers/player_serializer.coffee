@@ -5,4 +5,4 @@ define ['avioneta/serializers'], (Serializers) ->
       JSON.stringify @toJSON()
 
     toJSON : ->
-      id : @player.id, x : @player.x, y : @player.y
+      id : @player.id, x : @player.model.coordinates.x, y : @player.model.coordinates.y

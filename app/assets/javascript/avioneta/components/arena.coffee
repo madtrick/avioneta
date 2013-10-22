@@ -16,27 +16,28 @@ define ['underscore','avioneta/components'], (_, Components) ->
 
     update : () ->
       @players.forEach @_consolidatePlayer
+
+      @players.forEach (p1) =>
+        @players.forEach (p2) =>
+          if (p2 isnt p1) and (not p1.remote) and p1.collidesWith p2.boundingBox()
+            p1.backtrack()
+
       @players.forEach (p) => p.shots.forEach @_updateShot
       @players.forEach (p) => p.shots.forEach @_consolidateShot
 
     _consolidatePlayer : (player) =>
-      if player.x < 0
-        player.x = 0
+      boundingBox = player.boundingBox()
 
-      if player.y < 0
-        player.y = 0
-
-      if (player.x + player.width) > @width
-        player.x = @width - player.width
-
-      if player.y + player.height > @height
-        player.y = @height - player.height
+      if boundingBox.upperLeft.x < 0 or
+          boundingBox.upperLeft.y < 0 or
+          boundingBox.lowerLeft.y > @height or
+          boundingBox.lowerRight.x > @width
+        player.backtrack()
 
     _updateShot : (shot) =>
       shot.y += 1
 
     _consolidateShot : (shot) =>
-      console.log "consolidating shot"
       if shot.x < 0 or shot.y < 0
         shot.active = false
 

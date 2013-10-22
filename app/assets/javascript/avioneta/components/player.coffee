@@ -11,21 +11,31 @@ define [
     class Components.Player extends BaseComponent
       serializer : PlayerSerializer
 
-      HEIGHT = 5
-      WIDTH  = 100
-
       constructor : (attrs) ->
-        @x = attrs.x
-        @y = attrs.y
-        @width = WIDTH
-        @height= HEIGHT
         @remote = attrs.remote
+
+        @model = attrs.model
 
         # Naive unique-id
         # Am I being really stupid? adding the Math.random value to Date.now()
         # as its seed depends of the current time??
         @id = attrs.id || (Date.now() + Math.floor(Math.random() * 1000000))
         @shots = []
+
+      paint : (canvas) ->
+        @model.paint(canvas)
+
+      move : (args) ->
+        @model.move(args)
+
+      boundingBox : ->
+        @model.boundingBox()
+
+      collidesWith : (boundingBox) ->
+        @model.collidesWith(boundingBox)
+
+      backtrack : ->
+        @model.backtrack()
 
       update : ->
         _shots = []
@@ -36,23 +46,21 @@ define [
         @shots = _shots
 
         return if @remote
-        #commands = []
         if input.isDown 'DOWN'
-          command = new MovePlayerCommand player : @id, axis : "y", value : 1
+          command = new MovePlayerCommand player : @id, axis : "y", value : (@model.coordinates.y + 1)
 
         if input.isDown 'UP'
-          command = new MovePlayerCommand player : @id, axis : "y", value : -1
+          command = new MovePlayerCommand player : @id, axis : "y", value : (@model.coordinates.y - 1)
 
         if input.isDown 'LEFT'
-          command = new MovePlayerCommand player : @id, axis : "x", value : -1
+          command = new MovePlayerCommand player : @id, axis : "x", value : (@model.coordinates.x - 1)
 
         if input.isDown 'RIGHT'
-          command = new MovePlayerCommand player : @id, axis : "x", value : 1
+          command = new MovePlayerCommand player : @id, axis : "x", value : (@model.coordinates.x + 1)
 
 
         if input.isDown 'SPACE'
-          command = new ShootPlayerCommand player : @id, x : @x, y : @y
-          #@shots.push(new Shot x : @x, y : @y)
+          command = new ShootPlayerCommand player : @id, x : @model.coordinates.x, y : @model.coordinates.y
 
         command
 

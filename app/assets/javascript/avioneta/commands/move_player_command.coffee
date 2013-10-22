@@ -8,4 +8,4 @@ define [
       super _.extend {}, data : options, name : "MovePlayerCommand"
 
     run : (arena) ->
-      arena.getPlayer(@data().player)[@data().axis] += @data().value
+      arena.getPlayer(@data().player).move(axis : @data().axis, value : @data().value)

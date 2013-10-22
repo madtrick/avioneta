@@ -4,6 +4,5 @@ define ['avioneta/painters'], (Painters) ->
       @_canvas = canvas
 
     paint : (shot) ->
-      console.log shot
       @_canvas.fillStyle = "#ddd"
       @_canvas.fillRect(shot.x, shot.y, shot.width, shot.height)

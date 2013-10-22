@@ -7,9 +7,10 @@ define [
   'avioneta/commands/arena_commands',
   'avioneta/collections/command_collection',
   'avioneta/collections/order_collection',
-  'avioneta/serializers/command_collection_serializer'
+  'avioneta/serializers/command_collection_serializer',
+  'avioneta/components/models/player/basic_model'
 ],
-  (Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, OrderCollection, CommandCollectionSerializer) ->
+  (Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, OrderCollection, CommandCollectionSerializer, BasicModel) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
@@ -18,7 +19,8 @@ define [
         orders   = new OrderCollection()
 
         arena      = new Arena(width : 400, height : 400)
-        player     = new Player(x : 0, y : 0)
+        basicPlayerModel = new BasicModel(x : 0, y : 0)
+        player     = new Player(model : basicPlayerModel)
         command    = new ArenaCommands().registerPlayer player
 
         commands.push command
