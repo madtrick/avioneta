@@ -1,11 +1,9 @@
 define [
   'avioneta',
-  'avioneta/painters/player_painter',
-  'avioneta/painters/shot_painter',
   'avioneta/services/command_sync',
   'avioneta/serializers/command_collection_serializer',
   'avioneta/serializers/order_collection_serializer'
-  ], (Avioneta, PlayerPainter, ShotPainter, CommandSync, CommandCollectionSerializer, OrderCollectionSerializer) ->
+  ], (Avioneta, CommandSync, CommandCollectionSerializer, OrderCollectionSerializer) ->
     class Avioneta.GUI
       #
       # This game loop is strongly based
@@ -22,8 +20,6 @@ define [
         requestAnimationFrame(new @(attrs).loop)
 
       constructor : (attrs) ->
-        @_playerPainter = new PlayerPainter(attrs.canvas)
-        @_shotPainter   = new ShotPainter(attrs.canvas)
         @_commands      = attrs.commands
         @_orders        = attrs.orders
         @_arena         = attrs.arena
@@ -49,15 +45,8 @@ define [
         @_canvas.clearRect(0, 0, @_arena.width, @_arena.height)
         @_arena.players.forEach (player) =>
           player.paint(@_canvas)
-          #@_playerPainter.paint(player)
           player.shots.forEach (shot) =>
-            @_shotPainter.paint(shot)
-
-        #@_canvas.clearRect(0, 0, @_arena.width, @_arena.height)
-        #@_arena.players.forEach (player) =>
-        #  @_playerPainter.paint(player)
-        #  player.shots.forEach (shot) =>
-        #    @_shotPainter.paint(shot)
+            shot.paint(@_canvas)
 
       update : ->
         orders = []

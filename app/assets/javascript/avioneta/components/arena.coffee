@@ -35,14 +35,10 @@ define ['underscore','avioneta/components'], (_, Components) ->
         player.backtrack()
 
     _updateShot : (shot) =>
-      shot.y += 1
+      shot.move()
 
     _consolidateShot : (shot) =>
-      if shot.x < 0 or shot.y < 0
-        shot.active = false
+      boundingBox = shot.boundingBox()
 
-      if shot.x + shot.width > @width
-        shot.active = false
-
-      if shot.y + shot.height > @height
+      if boundingBox.upperLeft.y > @height
         shot.active = false

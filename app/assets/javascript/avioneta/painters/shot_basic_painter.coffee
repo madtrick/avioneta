@@ -1,5 +1,6 @@
 define ['avioneta/painters'], (Painters) ->
-  class Painters.PlayerBasicPainter
+  class Painters.ShotBasicPainter
     paint : (canvas, model) ->
-      canvas.fillStyle = "#000"
+      canvas.fillStyle = "#ddd"
       canvas.fillRect(model.coordinates.x, model.coordinates.y, model.width, model.height)
+

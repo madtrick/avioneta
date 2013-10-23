@@ -10,7 +10,7 @@ define [
     painter : PlayerBasicPainter
 
     constructor : (options) ->
-      @painter     = new PlayerBasicPainter()
+      @painter     = new @painter()
       @coordinates = {x : options.x, y : options.y}
       @vector      = new MovementVector(x : @coordinates.x, y : @coordinates.y)
 
