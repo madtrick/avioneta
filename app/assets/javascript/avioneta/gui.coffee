@@ -28,13 +28,11 @@ define [
         @_initTickCount()
         @_nextGameTick  = @_getTickCount()
 
-
       loop : =>
         requestAnimationFrame @loop
 
         @_loops = 0
         while @_getTickCount() > @_nextGameTick and @_loops < MAX_FRAMESKIP
-          #CommandSync.push @update()
           @update()
           @_nextGameTick += SKIP_TICKS
           @_loops += 1
@@ -55,19 +53,13 @@ define [
         orders.run(@_arena)
 
 
-        #@_orders.run(@_arena)
-        #@_orders.clear()
         @_commands.run(@_arena)
         @_commands.clear()
-        @_arena.update()
-        @_arena.players.forEach (player) => @_commands.push player.update()
+        @_arena.update(@_commands)
+        @_arena.players.forEach (player) => @_commands.push player.update(Date.now())
         @_commands.run(@_arena)
         CommandSync.push(new CommandCollectionSerializer(@_commands).serialize()) unless @_commands.isEmpty()
         @_commands.clear()
-        @_arena.update()
-        #commands = _.flatten @_arena.players.map (player) -> player.update()
-        #@_arena.update(commands)
-        #commands
 
       _getTickCount : ->
         Date.now() - @_initialTickCount

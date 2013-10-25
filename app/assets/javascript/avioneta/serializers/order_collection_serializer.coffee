@@ -4,7 +4,8 @@ define [
   'avioneta/serializers/register_player_order_serializer',
   'avioneta/serializers/disconnect_player_order_serializer',
   'avioneta/serializers/move_player_order_serializer',
-  'avioneta/serializers/shoot_player_order_serializer'
+  'avioneta/serializers/shoot_player_order_serializer',
+  'avioneta/serializers/destroy_player_order_serializer'
 ], (OrderCollection, Serializers) ->
   class Serializers.OrderCollectionSerializer
     constructor : (@collection) ->

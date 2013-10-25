@@ -3,8 +3,10 @@ define [
   class Components.Shot
 
     constructor : (attrs) ->
-      @model = attrs.model
-      @active= true
+      @model  = attrs.model
+      @remote = attrs.remote
+      @active = true
+      @id     = Date.now()
 
     paint : (canvas) ->
       @model.paint(canvas)

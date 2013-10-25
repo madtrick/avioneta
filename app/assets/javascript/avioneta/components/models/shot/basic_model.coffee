@@ -16,7 +16,6 @@ define [
       @speed       = 1
 
     paint : (canvas) ->
-      console.log "Painting #{@coordinates.y}"
       @painter.paint(canvas, @)
 
     move : ->

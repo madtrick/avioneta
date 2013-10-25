@@ -9,18 +9,22 @@ define [
   (Components, BaseComponent, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input) ->
 
     class Components.Player extends BaseComponent
-      serializer : PlayerSerializer
+      shotTreshold : 100
+      serializer   : PlayerSerializer
 
       constructor : (attrs) ->
-        @remote = attrs.remote
-
-        @model = attrs.model
+        @remote       = attrs.remote
+        @model        = attrs.model
+        @model.player = @
+        #@life         = 100
+        @shots        = []
+        #@alive        = true
+        #@destroyed      = false
 
         # Naive unique-id
         # Am I being really stupid? adding the Math.random value to Date.now()
         # as its seed depends of the current time??
         @id = attrs.id || (Date.now() + Math.floor(Math.random() * 1000000))
-        @shots = []
 
       paint : (canvas) ->
         @model.paint(canvas)
@@ -37,7 +41,19 @@ define [
       backtrack : ->
         @model.backtrack()
 
-      update : ->
+      hit : ->
+        @model.hit()
+
+      isAlive : ->
+        @model.isAlive()
+
+      isDestroyed : ->
+        @model.isDestroyed()
+
+      destroy : ->
+        @model = @model.destroy()
+
+      update : (time) ->
         _shots = []
         @shots.forEach (shot) ->
           if shot.active
@@ -46,6 +62,7 @@ define [
         @shots = _shots
 
         return if @remote
+
         if input.isDown 'DOWN'
           command = new MovePlayerCommand player : @id, axis : "y", value : (@model.coordinates.y + 1)
 
@@ -59,8 +76,11 @@ define [
           command = new MovePlayerCommand player : @id, axis : "x", value : (@model.coordinates.x + 1)
 
 
-        if input.isDown 'SPACE'
+        if (input.isDown('SPACE') and (time - @previousShot > @shotTreshold or (@previousShot is undefined))) 
+          @previousShot = time
           command = new ShootPlayerCommand player : @id, x : @model.coordinates.x, y : @model.coordinates.y
+
+
 
         command
 
