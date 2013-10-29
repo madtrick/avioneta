@@ -19,4 +19,5 @@ group :assets do
   guard 'coffeescript', input: 'app/assets/javascript', output: 'public/assets'
   guard 'coffeescript', input: 'spec/coffeescripts', output: 'spec/javascripts'
   guard 'sass', input: 'app/assets/style', output: 'public/assets'
+  guard 'eco', input: 'app/assets/javascript', output: 'public/assets'
 end

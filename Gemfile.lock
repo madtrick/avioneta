@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/madtrick/guard-eco.git
+  revision: a73357592a3ac714f9026945597c8630ea4e4af8
+  specs:
+    guard-eco (0.1.0)
+      eco (>= 1.0.0)
+      guard (>= 0.8.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -10,6 +18,11 @@ GEM
     coffee-script-source (1.6.3)
     diff-lcs (1.2.4)
     dotenv (0.9.0)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -93,6 +106,7 @@ PLATFORMS
 DEPENDENCIES
   foreman
   guard-coffeescript
+  guard-eco!
   guard-jasmine
   guard-livereload
   guard-sass
