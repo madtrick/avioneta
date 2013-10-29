@@ -18,6 +18,8 @@ task :build do
   copy_to "vendor/assets/bootstrap-3.0.0/bootstrap.css", "public/assets/vendor/bootstrap-3.0.0/bootstrap.css"
   copy_to "vendor/assets/jquery-2.0.3.js", "public/assets/vendor/jquery-2.0.3.js"
   copy_to "vendor/assets/bootbox.js", "public/assets/vendor/bootbox.js"
+  copy_to "vendor/assets/underscore-1.5.2.js", "public/assets/vendor/underscore-1.5.2.js"
+  copy_to "vendor/assets/backbone-1.1.0.js", "public/assets/vendor/backbone-1.1.0.js"
 end
 
 def ensure_path(path)
