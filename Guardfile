@@ -19,8 +19,4 @@ group :assets do
   guard 'coffeescript', input: 'app/assets/javascript', output: 'public/assets'
   guard 'coffeescript', input: 'spec/coffeescripts', output: 'spec/javascripts'
   guard 'sass', input: 'app/assets/style', output: 'public/assets'
-
-  guard :less, all_on_start: true, all_after_change: true, output: "public/assets/vendor/bootstrap-3.0.0/css"do
-    watch(%r{vendor/assets/bootstrap-3\.0\.0/less/.+\.less$})
-  end
 end

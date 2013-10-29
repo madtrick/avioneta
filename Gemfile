@@ -5,7 +5,6 @@ gem 'foreman'
 gem 'guard-coffeescript'
 gem 'guard-livereload'
 gem 'guard-sass'
-gem 'guard-less'
 
 group :development, :test do
   gem 'jasmine'
