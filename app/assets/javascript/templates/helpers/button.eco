@@ -1,0 +1,1 @@
+<button class="btn <%= @btnType %> <%= @extraClasses %>" id="<%= @id %>" type="button"><%= @text %></button>

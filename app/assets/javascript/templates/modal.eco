@@ -1,0 +1,7 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="js-modalized-header modal-header"></div>
+    <div class="js-modalized-body modal-body"></div>
+    <div class="js-modalized-footer modal-footer"></div>
+  </div>
+</div>

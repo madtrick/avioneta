@@ -21,4 +21,6 @@ requirejs.config
     frundis   : 'vendor/frundis'
   callback : ->
     $().ready ->
-      require ['avioneta/setup'], (Setup) -> Setup.init()
+      window.JST = {} # Required or JST will crash (ñapa)
+      require ['avioneta/setup'], (Setup) -> 
+        Setup.init()
