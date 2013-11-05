@@ -5,8 +5,9 @@ define [
   'avioneta/serializers/player_serializer',
   'avioneta/commands/move_player_command'
   'avioneta/commands/shoot_player_command'
-  'input'],
-  (Components, BaseComponent, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input) ->
+  'input',
+  'event_bus'],
+  (Components, BaseComponent, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
 
     class Components.Player extends BaseComponent
       shotTreshold : 100
@@ -15,6 +16,7 @@ define [
       constructor : (attrs) ->
         @remote       = attrs.remote
         @model        = attrs.model
+        @behaviour    = attrs.behaviour
         @model.player = @
         #@life         = 100
         @shots        = []
@@ -43,6 +45,7 @@ define [
 
       hit : ->
         @model.hit()
+        EventBus.trigger "scoreboard.update", id : @id, value : @model.lifePercentage()
 
       isAlive : ->
         @model.isAlive()
@@ -54,34 +57,11 @@ define [
         @model = @model.destroy()
 
       update : (time) ->
+        # Move this update shot code
         _shots = []
         @shots.forEach (shot) ->
           if shot.active
             _shots.push shot
 
         @shots = _shots
-
-        return if @remote
-
-        if input.isDown 'DOWN'
-          command = new MovePlayerCommand player : @id, axis : "y", value : (@model.coordinates.y + 1)
-
-        if input.isDown 'UP'
-          command = new MovePlayerCommand player : @id, axis : "y", value : (@model.coordinates.y - 1)
-
-        if input.isDown 'LEFT'
-          command = new MovePlayerCommand player : @id, axis : "x", value : (@model.coordinates.x - 1)
-
-        if input.isDown 'RIGHT'
-          command = new MovePlayerCommand player : @id, axis : "x", value : (@model.coordinates.x + 1)
-
-
-        if (input.isDown('SPACE') and (time - @previousShot > @shotTreshold or (@previousShot is undefined))) 
-          @previousShot = time
-          command = new ShootPlayerCommand player : @id, x : @model.coordinates.x, y : @model.coordinates.y
-
-
-
-        command
-
-
+        @behaviour.update(@, time)

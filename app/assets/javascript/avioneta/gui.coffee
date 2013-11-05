@@ -24,6 +24,7 @@ define [
         @_orders        = attrs.orders
         @_arena         = attrs.arena
         @_canvas        = attrs.canvas
+        @_bus           = attrs.bus
 
         @_initTickCount()
         @_nextGameTick  = @_getTickCount()
@@ -47,10 +48,11 @@ define [
             shot.paint(@_canvas)
 
       update : ->
-        orders = []
-        CommandSync.get(orders)
-        orders = new OrderCollectionSerializer(orders).deserialize()
-        orders.run(@_arena)
+        messages = []
+        CommandSync.get(messages)
+        if messages.length > 0
+          orders = new OrderCollectionSerializer().deserialize(messages)
+          orders.run(@_arena)
 
 
         @_commands.run(@_arena)

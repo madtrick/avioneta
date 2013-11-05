@@ -20,6 +20,7 @@ task :build do
   copy_to "vendor/assets/bootbox.js", "public/assets/vendor/bootbox.js"
   copy_to "vendor/assets/underscore-1.5.2.js", "public/assets/vendor/underscore-1.5.2.js"
   copy_to "vendor/assets/backbone-1.1.0.js", "public/assets/vendor/backbone-1.1.0.js"
+  copy_to "vendor/assets/microevent.js", "public/assets/vendor/microevent.js"
 end
 
 def ensure_path(path)

@@ -30,7 +30,9 @@ define [
 
     hit : ->
       @life -= 10
-      console.log "Hit #{@life}"
 
     destroy : ->
       new DestroyModel(x : @coordinates.x, y : @coordinates.y, movementVector : @vector)
+
+    lifePercentage : ->
+      @life

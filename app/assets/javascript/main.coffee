@@ -12,6 +12,8 @@ requirejs.config
       exports : 'bootbox'
     'backbone':
       exports : 'Backbone'
+    'microevent':
+      exports : 'MicroEvent'
   paths :
     jquery    : 'vendor/jquery-2.0.3'
     bootbox   : 'vendor/bootbox'
@@ -19,6 +21,7 @@ requirejs.config
     backbone  : 'vendor/backbone-1.1.0'
     underscore: 'vendor/underscore-1.5.2'
     frundis   : 'vendor/frundis'
+    microevent   : 'vendor/microevent'
   callback : ->
     $().ready ->
       window.JST = {} # Required or JST will crash (ñapa)

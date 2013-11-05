@@ -10,4 +10,3 @@ define [
     run : (arena) ->
       #arena.removePlayer(arena.getPlayer(@data().id))
       arena.getPlayer(@data().player).destroy()
-

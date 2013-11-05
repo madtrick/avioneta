@@ -1,8 +1,9 @@
 define [
   'underscore',
   'avioneta/components',
-  'avioneta/commands/destroy_player_command'
-], (_, Components, DestroyPlayerCommand) ->
+  'avioneta/commands/destroy_player_command',
+  'event_bus'
+], (_, Components, DestroyPlayerCommand, EventBus) ->
   class Components.Arena
     constructor : (attrs) ->
       @width  = attrs.width
@@ -11,9 +12,11 @@ define [
 
     addPlayer : (player) ->
       @players.push player
+      EventBus.trigger "scoreboard.create", id : player.id, value : 100
 
     removePlayer : (player) ->
       @players = _.reject(@players, (e) -> e is player)
+      EventBus.trigger "scoreboard.destroy", id : player.id
 
     getPlayer : (playerId) ->
       _.find @players, (player) -> player.id is playerId
@@ -34,8 +37,9 @@ define [
               if s.active and (p2 isnt p1) and p2.collidesWith(s.boundingBox())
                 s.active = false
 
+                #unless s.remote
+                p2.hit()
                 unless s.remote
-                  p2.hit()
                   unless p2.isAlive()
                     console.log "Destroyed"
                     commands.push(new DestroyPlayerCommand(player : p2.id))

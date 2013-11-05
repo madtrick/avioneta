@@ -1,4 +1,5 @@
 define [
+  'underscore'
   'avioneta/collections/order_collection',
   'avioneta/serializers',
   'avioneta/serializers/register_player_order_serializer',
@@ -6,17 +7,15 @@ define [
   'avioneta/serializers/move_player_order_serializer',
   'avioneta/serializers/shoot_player_order_serializer',
   'avioneta/serializers/destroy_player_order_serializer'
-], (OrderCollection, Serializers) ->
+], (_, OrderCollection, Serializers) ->
   class Serializers.OrderCollectionSerializer
     constructor : (@collection) ->
 
-    deserialize : ->
+    deserialize : (jsonMessages) ->
       collection = new OrderCollection()
-      _.each @collection, (element) ->
+      orders = _.flatten(_.map(jsonMessages, JSON.parse))
+      _.each orders, (element) ->
         console.log element
-        #debugger
-        parsedElement = JSON.parse(element)
-        console.log parsedElement
-        collection.push new Serializers["#{parsedElement.type}Serializer"]().deserialize(parsedElement.data)
+        collection.push new Serializers["#{element.type}Serializer"]().deserialize(element.data)
 
       collection
