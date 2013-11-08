@@ -5,6 +5,7 @@ define ['views', 'backbone', 'jst!templates/scoreboard/item'], (Scoreboard, Back
     initialize : (@options = options) ->
     render : ->
       @$el.html template(@options)
+      @$el.find("span").css color : @options.color
       @
 
     destroy : ->

@@ -6,7 +6,7 @@ define ['interests'], (Interests) ->
       bus.on "scoreboard.destroy", @_handleItemDestroyEvent
 
     _handleItemCreateEvent : (e) =>
-      @sc.create id : e.id, value : e.value
+      @sc.create id : e.id, value : e.value, color : e.color
 
     _handleItemUpdateEvent : (e) =>
       @sc.update id: e.id, value : e.value

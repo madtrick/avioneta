@@ -18,6 +18,7 @@ define [
         @model        = attrs.model
         @behaviour    = attrs.behaviour
         @model.player = @
+        @color        = attrs.color
         #@life         = 100
         @shots        = []
         #@alive        = true
