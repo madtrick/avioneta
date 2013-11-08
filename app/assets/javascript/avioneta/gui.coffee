@@ -20,11 +20,8 @@ define [
         requestAnimationFrame(new @(attrs).loop)
 
       constructor : (attrs) ->
-        @_commands      = attrs.commands
-        @_orders        = attrs.orders
-        @_arena         = attrs.arena
         @_canvas        = attrs.canvas
-        @_bus           = attrs.bus
+        @_game = attrs.game
 
         @_initTickCount()
         @_nextGameTick  = @_getTickCount()
@@ -41,27 +38,11 @@ define [
         @render()
 
       render : ->
-        @_canvas.clearRect(0, 0, @_arena.width, @_arena.height)
-        @_arena.players.forEach (player) =>
-          player.paint(@_canvas)
-          player.shots.forEach (shot) =>
-            shot.paint(@_canvas)
+        @_canvas.clearRect(0, 0, @_canvas.canvas.width, @_canvas.canvas.height)
+        @_game.render(@_canvas)
 
       update : ->
-        messages = []
-        CommandSync.get(messages)
-        if messages.length > 0
-          orders = new OrderCollectionSerializer().deserialize(messages)
-          orders.run(@_arena)
-
-
-        @_commands.run(@_arena)
-        @_commands.clear()
-        @_arena.update(@_commands)
-        @_arena.players.forEach (player) => @_commands.push player.update(Date.now())
-        @_commands.run(@_arena)
-        CommandSync.push(new CommandCollectionSerializer(@_commands).serialize()) unless @_commands.isEmpty()
-        @_commands.clear()
+        @_game.update()
 
       _getTickCount : ->
         Date.now() - @_initialTickCount

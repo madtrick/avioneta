@@ -16,9 +16,10 @@ define [
   'interests/score_board_interests',
   'views/modals/player_destroyed_view',
   'interests/player_destroyed_interests',
-  'avioneta/commands/register_player_command'
+  'avioneta/commands/register_player_command',
+  'avioneta/game'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, OrderCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, OrderCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
@@ -30,8 +31,6 @@ define [
         orders   = new OrderCollection()
 
         arena      = new Arena(width : 400, height : 400)
-        #player     = new Player(model : new BasicModel(x : 0, y : 0))
-        #command    = new ArenaCommands().registerPlayer player
         command = new RegisterPlayerCommand()
         bus        = EventBus
 
@@ -40,8 +39,7 @@ define [
 
         sc = new Scoreboard(el : '.scoreboard').render()
         new ScoreBoardInterests(sc, bus)
-        #sc.create(id : player.id, title: "player", 100)
-        #
         new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
 
-        GUI.init(commands: commands, orders : orders, bus : bus, arena : arena, canvas : $('canvas')[0].getContext("2d"))
+        game = new Game commands : commands, orders : orders, arena : arena, commandSync : CommandSync
+        GUI.init(game : game, canvas : $('canvas')[0].getContext("2d"))
