@@ -44,7 +44,13 @@ define [
                     console.log "Destroyed"
                     commands.push(new DestroyPlayerCommand(player : p2.id))
 
+      @players.forEach (p) => commands.push p.update(Date.now())
 
+    render : (canvas) ->
+      @players.forEach (player) =>
+        player.paint(canvas)
+        player.shots.forEach (shot) =>
+          shot.paint(canvas)
 
     _consolidatePlayer : (player) =>
        player.backtrack() if @_playerOutOfArena(player)

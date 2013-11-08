@@ -20,14 +20,9 @@ define [
       @commands.run(@arena)
       @commands.clear()
       @arena.update(@commands)
-      @arena.players.forEach (player) => @commands.push player.update(Date.now())
       @commands.run(@arena)
       @commandSync.push(new CommandCollectionSerializer(@commands).serialize()) unless @commands.isEmpty()
       @commands.clear()
 
     render : (canvas) ->
-      @arena.players.forEach (player) =>
-        player.paint(canvas)
-        player.shots.forEach (shot) =>
-          shot.paint(canvas)
-
+      @arena.render(canvas)
