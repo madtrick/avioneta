@@ -32,11 +32,11 @@ define [
         sc = new Scoreboard(el : '.scoreboard').render()
 
         commands.push command
-        CommandSync.push(new CommandCollectionSerializer(commands).serialize())
+        CommandSync.push(new CommandCollectionSerializer().serialize(commands))
         commands.clear()
 
         new ScoreBoardInterests(sc, bus)
         new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
 
-        game = new Game commands : commands, arena : arena, commandSync : CommandSync
+        game = new Game arena : arena, commandSync : CommandSync
         GUI.init(game : game, canvas : $('canvas')[0].getContext("2d"))
