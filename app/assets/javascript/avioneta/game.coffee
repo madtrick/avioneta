@@ -7,7 +7,6 @@ define [
       @commandSync = options.commandSync
       @arena = options.arena
       @commands = options.commands
-      @orders = options.orders
 
     update : ->
       messages = []
@@ -16,9 +15,6 @@ define [
         orders = new OrderCollectionSerializer().deserialize(messages)
         orders.run(@arena)
 
-
-      @commands.run(@arena)
-      @commands.clear()
       @arena.update(@commands)
       @commands.run(@arena)
       @commandSync.push(new CommandCollectionSerializer(@commands).serialize()) unless @commands.isEmpty()
