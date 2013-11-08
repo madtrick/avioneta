@@ -13,9 +13,7 @@ define [
       @arena = options.arena
 
     update : ->
-      messages = []
-      @commandSync.get(messages)
-      if messages.length > 0
+      @commandSync.get (messages) =>
         orders = @ordersSerializer.deserialize(messages)
         orders.run(@arena)
 

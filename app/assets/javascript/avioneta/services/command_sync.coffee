@@ -11,11 +11,10 @@ define ['avioneta/services'], (Services) ->
 
       @_connection().send commands
 
-    @get : (collection) ->
+    @get : (callback) ->
       return if @_incomming_queue().length is 0
-      @_incomming_queue().forEach (message) -> collection.push message
+      callback(@_incomming_queue())
       @_incomming_queue_ = []
-      collection
 
     @_connection : ->
       @_websocket ||= new WebSocket(SERVER_URL)
