@@ -22,3 +22,5 @@ define [
         @destroyed = true
 
     hit : ->
+
+    lifePercentage : -> 0
