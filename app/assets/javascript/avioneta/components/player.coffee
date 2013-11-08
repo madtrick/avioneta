@@ -19,10 +19,7 @@ define [
         @behaviour    = attrs.behaviour
         @model.player = @
         @color        = attrs.color
-        #@life         = 100
         @shots        = []
-        #@alive        = true
-        #@destroyed      = false
 
         # Naive unique-id
         # Am I being really stupid? adding the Math.random value to Date.now()
