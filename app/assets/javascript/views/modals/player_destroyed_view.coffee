@@ -1,4 +1,8 @@
-define ['views/modals', 'views/modals/base', 'mixins/modalizable'], (Modals, Base, Modalizable) ->
+define [
+  'views/modals',
+  'views/modals/base',
+  'mixins/modalizable',
+  'jst!templates/modals/player_destroyed'], (Modals, Base, Modalizable, template) ->
   class Modals.PlayerDestroyedView extends Base
     modalizable :
       header : "Player destroyed"
@@ -6,8 +10,15 @@ define ['views/modals', 'views/modals/base', 'mixins/modalizable'], (Modals, Bas
         save : text : "Yes", cb: "_handleOk"
         cancel: text: "No", cb: "_handleCancel"
 
+    render : ->
+      @$el.html template()
+
     _handleOk : ->
-    _handleCanel : ->
+      # Shabby way of starting over
+      window.location = window.location
+
+    _handleCancel : ->
+      @rejectModal()
 
 
   Modalizable.mixin Modals.PlayerDestroyedView
