@@ -36,6 +36,7 @@ define [
 
         commands.push command
         CommandSync.push(new CommandCollectionSerializer(commands).serialize())
+        commands.clear()
 
         sc = new Scoreboard(el : '.scoreboard').render()
         new ScoreBoardInterests(sc, bus)
