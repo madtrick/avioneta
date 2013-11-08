@@ -17,14 +17,10 @@ define [
         @remote       = attrs.remote
         @model        = attrs.model
         @behaviour    = attrs.behaviour
-        @model.player = @
+        @id           = attrs.id
         @color        = attrs.color
         @shots        = []
-
-        # Naive unique-id
-        # Am I being really stupid? adding the Math.random value to Date.now()
-        # as its seed depends of the current time??
-        @id = attrs.id || (Date.now() + Math.floor(Math.random() * 1000000))
+        @model.player = @
 
       paint : (canvas) ->
         @model.paint(canvas)
