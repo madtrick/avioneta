@@ -2,13 +2,12 @@ define [
   'avioneta',
   'avioneta/collections/command_collection',
   'avioneta/serializers/command_collection_serializer',
-  'avioneta/serializers/order_collection_serializer',
-  'avioneta/serializers/message_serializer'], (Avioneta, CommandCollection, CommandCollectionSerializer, OrderCollectionSerializer, MessageSerializer) ->
+  'avioneta/serializers/message_collection_serializer'
+], (Avioneta, CommandCollection, CommandCollectionSerializer, MessageCollectionSerializer) ->
   class Avioneta.Game
     commands           : new CommandCollection()
     commandsSerializer : new CommandCollectionSerializer()
-    ordersSerializer   : new OrderCollectionSerializer()
-    messageSerializer  : new MessageSerializer()
+    messageCollectionSerializer  : new MessageCollectionSerializer()
 
     constructor : (options) ->
       @commandSync = options.commandSync
@@ -16,7 +15,7 @@ define [
 
     update : ->
       @commandSync.get (messages) =>
-        @messageSerializer.deserialize(messages).run(@arena)
+        @messageCollectionSerializer.deserialize(messages).run(@arena)
 
       @arena.update(@commands)
       @commands.run(@arena)

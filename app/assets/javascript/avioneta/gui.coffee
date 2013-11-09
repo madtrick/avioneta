@@ -1,9 +1,4 @@
-define [
-  'avioneta',
-  'avioneta/services/command_sync',
-  'avioneta/serializers/command_collection_serializer',
-  'avioneta/serializers/order_collection_serializer'
-  ], (Avioneta, CommandSync, CommandCollectionSerializer, OrderCollectionSerializer) ->
+define ['avioneta'], (Avioneta) ->
     class Avioneta.GUI
       #
       # This game loop is strongly based
