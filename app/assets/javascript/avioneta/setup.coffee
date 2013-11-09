@@ -16,9 +16,10 @@ define [
   'views/modals/player_destroyed_view',
   'interests/player_destroyed_interests',
   'avioneta/commands/register_player_command',
-  'avioneta/game'
+  'avioneta/game',
+  'extensions/string'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
