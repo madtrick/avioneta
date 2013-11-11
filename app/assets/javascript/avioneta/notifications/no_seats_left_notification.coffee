@@ -1,4 +1,4 @@
-define ['avioneta/notifications'], (Notifications) ->
+define ['avioneta/notifications', 'event_bus'], (Notifications, bus) ->
   class Notifications.NoSeatsLeftNotification
-    run : (arena) ->
-      console.log "No seats left notification"
+    run : (_arena) ->
+      bus.trigger "arena.no_seats_left"

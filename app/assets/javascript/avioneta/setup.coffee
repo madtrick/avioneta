@@ -17,9 +17,11 @@ define [
   'interests/player_destroyed_interests',
   'avioneta/commands/register_player_command',
   'avioneta/game',
-  'extensions/string'
+  'extensions/string',
+  'views/modals/no_seats_left_view',
+  'interests/no_seats_left_view_interests'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
@@ -38,6 +40,7 @@ define [
 
         new ScoreBoardInterests(sc, bus)
         new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
+        new NoSeatsLeftViewInterests(new NoSeatsLeftView(), bus)
 
         game = new Game arena : arena, commandSync : CommandSync
         GUI.init(game : game, canvas : $('canvas')[0].getContext("2d"))
