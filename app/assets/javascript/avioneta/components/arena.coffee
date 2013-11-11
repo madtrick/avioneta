@@ -12,7 +12,7 @@ define [
 
     addPlayer : (player) ->
       @players.push player
-      EventBus.trigger "scoreboard.create", id : player.id, name : player.name, value : 100, color : player.color
+      EventBus.trigger "scoreboard.create", id : player.id, name : player.name, value : 100, color : player.color, remote : player.remote
 
     removePlayer : (player) ->
       @players = _.reject(@players, (e) -> e is player)
