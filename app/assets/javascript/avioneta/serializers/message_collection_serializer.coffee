@@ -4,6 +4,7 @@ define ['avioneta/serializers', 'avioneta/collections/action_collection'], (Seri
       collection = new ActionCollection()
       messages   = _.flatten(_.map(json, JSON.parse))
       _.each messages, (message) =>
+        console.log message
         collection.push (@_serializerFor message.type).deserialize(message.data)
 
       collection

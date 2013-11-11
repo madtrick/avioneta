@@ -13,6 +13,7 @@ define [
         id     : @options.id
         color  : @options.color
         model  : new BasicModel(x : @options.x, y : @options.y)
+        name   : @options.name
         behaviour : if @options.remote then new RemotePlayerBehaviour() else new LocalPlayerBehaviour()
 
       arena.addPlayer(player)

@@ -19,6 +19,7 @@ define [
         @behaviour    = attrs.behaviour
         @id           = attrs.id
         @color        = attrs.color
+        @name         = attrs.name
         @shots        = []
         @model.player = @
 
