@@ -9,5 +9,9 @@ define [
     constructor : (options) ->
       super _.extend {}, data : options, name : "ShootPlayerCommand"
 
-    run : (arena) ->
-      arena.getPlayer(@data().player).shots.push new Shot(model : new BasicModel(x : @data().x, y : @data().y))
+    run : (_) ->
+      ##arena.getPlayer(@data().player).shots.push new Shot(model : new BasicModel(x : @data().x, y : @data().y))
+      #arena.addShot new Shot(
+      #  player : arena.getPlayer(@data().player)
+      #  model : new BasicModel(x : @data().x, y : @data().y, remote : false)
+      #)

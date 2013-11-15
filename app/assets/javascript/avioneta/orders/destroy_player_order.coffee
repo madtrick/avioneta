@@ -6,7 +6,8 @@ define [
     constructor : (@options) ->
 
     run : (arena) ->
-      player = arena.getPlayer(@options.id)
-      arena.removePlayer(player)
+      arena.getPlayer(@options.id).destroy()
+      #player = arena.getPlayer(@options.id)
+      #arena.removePlayer(player)
 
-      EventBus.trigger "player.destroyed"
+      #EventBus.trigger "player.destroyed"

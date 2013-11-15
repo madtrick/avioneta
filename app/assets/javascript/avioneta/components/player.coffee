@@ -16,7 +16,6 @@ define [
       constructor : (attrs) ->
         @remote       = attrs.remote
         @model        = attrs.model
-        @behaviour    = attrs.behaviour
         @id           = attrs.id
         @color        = attrs.color
         @name         = attrs.name
@@ -49,14 +48,15 @@ define [
         @model.isDestroyed()
 
       destroy : ->
-        @model = @model.destroy()
+        @model.destroy(@)
 
-      update : (time) ->
-        # Move this update shot code
-        _shots = []
-        @shots.forEach (shot) ->
-          if shot.active
-            _shots.push shot
+      update : (arena, time) ->
+        @model.update(@, arena, time)
+        ## Move this update shot code
+        #_shots = []
+        #@shots.forEach (shot) ->
+        #  if shot.active
+        #    _shots.push shot
 
-        @shots = _shots
-        @behaviour.update(@, time)
+        #@shots = _shots
+        #@behaviour.update(@, time)

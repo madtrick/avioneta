@@ -19,7 +19,7 @@ define [
 
       @arena.update(@commands)
       @commands.run(@arena)
-      @commandSync.push(@commandsSerializer.serialize(@commands)) unless @commands.isEmpty()
+      @commandSync.push serialization if serialization = @commands.serialize()
       @commands.clear()
 
     render : (canvas) ->

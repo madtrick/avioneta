@@ -31,8 +31,12 @@ define [
     hit : ->
       @life -= 10
 
-    destroy : ->
-      new DestroyModel(x : @coordinates.x, y : @coordinates.y, movementVector : @vector)
+    destroy : (player) ->
+      player.model = new DestroyModel
+        x : @coordinates.x
+        y : @coordinates.y
+        movementVector : @vector
+        behaviour : @behaviour.destroy()
 
     lifePercentage : ->
       @life

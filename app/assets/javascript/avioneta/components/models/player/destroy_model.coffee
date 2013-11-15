@@ -12,14 +12,14 @@ define [
     constructor : (options) ->
       super(_.extend options, life : 0)
 
-      @destroyFrames = 0
+      #@destroyFrames = 0
 
-    paint : (canvas)->
-      super(canvas)
+    #paint : (canvas)->
+    #  super(canvas)
 
-      @destroyFrames += 1
-      if @destroyFrames is 40
-        @destroyed = true
+    #  @destroyFrames += 1
+    #  if @destroyFrames is 40
+    #    @destroyed = true
 
     hit : ->
 

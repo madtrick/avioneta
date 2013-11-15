@@ -9,6 +9,7 @@ define [
       @vector      = options.movementVector or new MovementVector(x : @coordinates.x, y : @coordinates.y)
       @life        = options.life or 100
       @destroyed   = options.destroyed or false
+      @behaviour   = options.behaviour
 
     paint : (canvas) ->
       @painter.paint(canvas, @)
@@ -33,4 +34,7 @@ define [
 
     isDestroyed : ->
       @destroyed
+
+    update : (player, arena, time) ->
+      @behaviour.update(player, arena, time)
 
