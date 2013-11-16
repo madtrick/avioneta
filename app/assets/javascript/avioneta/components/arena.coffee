@@ -32,11 +32,11 @@ define [
       _.find @shots, (shot) -> shot.id is shotId
 
     update : (commands) ->
-      @players.forEach (p1) => 
-        if p1.isDestroyed()
-          @removePlayer p1
-        else if p1.isAlive()
-          @_consolidatePlayer p1
+      #@players.forEach (p1) => 
+      #  if p1.isDestroyed()
+      #    @removePlayer p1
+      #  else if p1.isAlive()
+      #    @_consolidatePlayer p1
 
           #p1.shots.forEach @_updateShot
 

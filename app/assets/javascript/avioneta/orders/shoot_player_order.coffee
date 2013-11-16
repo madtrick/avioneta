@@ -14,4 +14,3 @@ define [
         model : new BasicModel(x : @options.x, y : @options.y))
 
       arena.addShot shot
-      #player.shots.push shot

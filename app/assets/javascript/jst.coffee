@@ -12,7 +12,3 @@ define
   load : (name, req, onload, config) ->
     get "#{config.baseUrl}#{name}.js", (data) ->
       onload.fromText "define(function(){return #{data}})"
-
-
-
-

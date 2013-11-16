@@ -34,7 +34,6 @@ define [
 
     hit : (shot) ->
       shot.active = false
-      #@behaviour.hit(@, shot, player)
 
     boundingBox : ->
       upperLeft : x : @coordinates.x, y : @coordinates.y

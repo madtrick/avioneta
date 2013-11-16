@@ -7,10 +7,8 @@ define ['avioneta/collections'], (Collections) ->
       return unless command
       if command instanceof Array
         @_pushCommands command
-        #@_queue.concat command
       else
         @_pushCommand  command
-        #@_queue.push command
       @
 
     size : ->
@@ -24,9 +22,6 @@ define ['avioneta/collections'], (Collections) ->
 
     each: (callback) ->
       @_queue.forEach callback
-
-    #map : (callback) ->
-    #  @_queue.map callback
 
     values : ->
       @_queue

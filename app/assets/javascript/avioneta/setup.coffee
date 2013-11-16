@@ -5,7 +5,6 @@ define [
   'avioneta/components/arena',
   'avioneta/components/player',
   'avioneta/services/command_sync',
-  'avioneta/commands/arena_commands',
   'avioneta/collections/command_collection',
   'avioneta/serializers/command_collection_serializer',
   'avioneta/components/models/player/basic_model',
@@ -21,7 +20,7 @@ define [
   'views/modals/no_seats_left_view',
   'interests/no_seats_left_view_interests'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, ArenaCommands, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()

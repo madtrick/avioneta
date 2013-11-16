@@ -52,11 +52,3 @@ define [
 
       update : (arena, time) ->
         @model.update(@, arena, time)
-        ## Move this update shot code
-        #_shots = []
-        #@shots.forEach (shot) ->
-        #  if shot.active
-        #    _shots.push shot
-
-        #@shots = _shots
-        #@behaviour.update(@, time)
