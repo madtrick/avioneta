@@ -13,7 +13,7 @@ define [
 
     addPlayer : (player) ->
       @players.push player
-      EventBus.trigger "scoreboard.create", id : player.id, name : player.name, value : 100, color : player.color, remote : player.remote
+      EventBus.trigger "scoreboard.create", id : player.id, name : player.name, value : player.life(), color : player.color, remote : player.remote
 
     removePlayer : (player) ->
       @players = _.reject(@players, (e) -> e is player)
@@ -31,7 +31,7 @@ define [
     getShot : (shotId) ->
       _.find @shots, (shot) -> shot.id is shotId
 
-    update : (commands) ->
+    update : (actions) ->
       #@players.forEach (p1) => 
       #  if p1.isDestroyed()
       #    @removePlayer p1
@@ -55,8 +55,8 @@ define [
           #          console.log "Destroyed"
           #          commands.push(new DestroyPlayerCommand(player : p2.id))
 
-      @shots.forEach (s) => commands.push s.update(@, Date.now())
-      @players.forEach (p) => commands.push p.update(@, Date.now())
+      @shots.forEach (s) => actions.push s.update(@, Date.now())
+      @players.forEach (p) => actions.push p.update(@, Date.now())
 
     render : (canvas) ->
       @players.forEach (player) =>
@@ -68,8 +68,8 @@ define [
         console.log "Painting shot"
         shot.paint(canvas)
 
-    _consolidatePlayer : (player) =>
-       player.backtrack() if @_playerOutOfArena(player)
+    #_consolidatePlayer : (player) =>
+    #   player.backtrack() if @_playerOutOfArena(player)
 
     #_updateShot : (shot) =>
     #  shot.move()
@@ -78,9 +78,9 @@ define [
     #_shotOutOfArena : (shot) ->
     #  shot.boundingBox().upperLeft.y > @height
 
-    _playerOutOfArena : (player) ->
-      boundingBox = player.boundingBox()
-      boundingBox.upperLeft.x < 0 or
-        boundingBox.upperLeft.y < 0 or
-        boundingBox.lowerLeft.y > @height or
-        boundingBox.lowerRight.x > @width
+    #_playerOutOfArena : (player) ->
+    #  boundingBox = player.boundingBox()
+    #  boundingBox.upperLeft.x < 0 or
+    #    boundingBox.upperLeft.y < 0 or
+    #    boundingBox.lowerLeft.y > @height or
+    #    boundingBox.lowerRight.x > @width

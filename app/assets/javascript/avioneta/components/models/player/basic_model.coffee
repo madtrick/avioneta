@@ -13,7 +13,7 @@ define [
     painter : PlayerBasicPainter
 
     constructor : (options) ->
-      super(_.extend options, life : 100)
+      super(options)
 
     move : (args) ->
       @coordinates[args.axis] = args.value

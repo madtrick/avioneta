@@ -7,5 +7,5 @@ define [
     constructor : (options) ->
       super _.extend {}, data : options, name : "MovePlayerCommand"
 
-    run : (arena) ->
-      arena.getPlayer(@data().player).move(axis : @data().axis, value : @data().value)
+    #run : (arena) ->
+    #  arena.getPlayer(@data().player).move(axis : @data().axis, value : @data().value)

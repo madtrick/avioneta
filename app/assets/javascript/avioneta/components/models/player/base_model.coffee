@@ -37,4 +37,3 @@ define [
 
     update : (player, arena, time) ->
       @behaviour.update(player, arena, time)
-

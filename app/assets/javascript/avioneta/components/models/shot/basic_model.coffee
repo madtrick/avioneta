@@ -22,12 +22,7 @@ define [
       @painter.paint(canvas, @)
 
     update : (shot, arena)->
-      command = @behaviour.update(@, shot, arena)
-
-      arena.removeShot(shot) if @_isOutOfArenaBoundings(arena)
-      arena.removeShot(shot) unless shot.active
-
-      command
+      @behaviour.update(shot, arena)
 
     move : ->
       @coordinates.y += @speed
@@ -42,6 +37,3 @@ define [
       lowerRight: x : (@coordinates.x + @width), y : (@coordinates.y + @height)
       height : @height
       width  : @width
-
-    _isOutOfArenaBoundings : (arena) ->
-      @boundingBox().upperLeft.y > arena.height

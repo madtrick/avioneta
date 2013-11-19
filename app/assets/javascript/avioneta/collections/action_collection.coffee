@@ -1,7 +1,8 @@
 define ['avioneta/collections'], (Collections) ->
   class Collections.ActionCollection
-    constructor : ->
+    constructor : (options) ->
       @_queue = []
+      #@serializer = options.serializer
 
     push : (command) ->
       return unless command
@@ -26,8 +27,11 @@ define ['avioneta/collections'], (Collections) ->
     values : ->
       @_queue
 
-    serialize : ->
-      new @serializer().serialize(@)
+    #serialize : ->
+    #  new @serializer().serialize(@)
+    #
+    commands : ->
+      @values().map (action) -> action.command()
 
     _pushCommand : (command) ->
       @_queue.push command

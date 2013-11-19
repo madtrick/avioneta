@@ -6,5 +6,3 @@ define [
   class Commands.ShootPlayerCommand extends BaseCommand
     constructor : (options) ->
       super _.extend {}, data : options, name : "ShootPlayerCommand"
-
-    run : (_) ->

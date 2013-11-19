@@ -7,5 +7,5 @@ define [
     constructor : (options) ->
       super _.extend {}, data : options, name : "DestroyPlayerCommand"
 
-    run : (arena) ->
-      arena.getPlayer(@data().player).destroy()
+    #run : (arena) ->
+    #  arena.getPlayer(@data().player).destroy()

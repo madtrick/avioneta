@@ -12,7 +12,7 @@ define [
       player = new Player
         id     : @options.id
         color  : @options.color
-        model  : new BasicModel(x : @options.x, y : @options.y, behaviour : @_behaviour())
+        model  : new BasicModel(life : @options.life, x : @options.x, y : @options.y, behaviour : @_behaviour())
         name   : @options.name
         remote : @options.remote
 

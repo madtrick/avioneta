@@ -5,8 +5,7 @@ define [
   'avioneta/components/arena',
   'avioneta/components/player',
   'avioneta/services/command_sync',
-  'avioneta/collections/command_collection',
-  'avioneta/serializers/command_collection_serializer',
+  'avioneta/serializers/collection_serializer',
   'avioneta/components/models/player/basic_model',
   'avioneta/configurator',
   'views/scoreboard',
@@ -20,22 +19,22 @@ define [
   'views/modals/no_seats_left_view',
   'interests/no_seats_left_view_interests'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, CommandCollection, CommandCollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
 
         #configurator = new Configurator($.Deferred())
         #configurator.done ->
-        commands = new CommandCollection()
+        #commands = new CommandCollection()
+        commands = []
         arena    = new Arena(width : 400, height : 400)
         command  = new RegisterPlayerCommand()
         bus      = EventBus
         sc = new Scoreboard(el : '.scoreboard').render()
 
         commands.push command
-        CommandSync.push(new CommandCollectionSerializer().serialize(commands))
-        commands.clear()
+        CommandSync.push(new CollectionSerializer().serialize(commands))
 
         new ScoreBoardInterests(sc, bus)
         new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
