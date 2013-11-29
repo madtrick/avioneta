@@ -35,5 +35,5 @@ define [
     isDestroyed : ->
       @destroyed
 
-    update : (player, arena, time) ->
-      @behaviour.update(player, arena, time)
+    update : (player, arena, time, services) ->
+      @behaviour.update(player, arena, time, services)

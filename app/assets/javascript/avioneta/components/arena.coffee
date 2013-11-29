@@ -31,7 +31,7 @@ define [
     getShot : (shotId) ->
       _.find @shots, (shot) -> shot.id is shotId
 
-    update : (actions) ->
+    update : (actions, services) ->
       #@players.forEach (p1) => 
       #  if p1.isDestroyed()
       #    @removePlayer p1
@@ -56,7 +56,7 @@ define [
           #          commands.push(new DestroyPlayerCommand(player : p2.id))
 
       @shots.forEach (s) => actions.push s.update(@, Date.now())
-      @players.forEach (p) => actions.push p.update(@, Date.now())
+      @players.forEach (p) => actions.push p.update(@, Date.now(), services)
 
     render : (canvas) ->
       @players.forEach (player) =>

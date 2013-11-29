@@ -11,15 +11,19 @@ define ['avioneta'], (Avioneta) ->
       SKIP_TICKS       = 1000 / TICKS_PER_SECOND
       MAX_FRAMESKIP    = 10
 
-      @init : (attrs)  ->
-        requestAnimationFrame(new @(attrs).loop)
+      #@init : (attrs)  ->
+      #  requestAnimationFrame(new @(attrs).loop)
 
       constructor : (attrs) ->
         @_canvas        = attrs.canvas
-        @_game = attrs.game
+        #@_game = attrs.game
 
         @_initTickCount()
         @_nextGameTick  = @_getTickCount()
+
+      start : (game) ->
+        @_game = game
+        requestAnimationFrame(@loop)
 
       loop : =>
         requestAnimationFrame @loop

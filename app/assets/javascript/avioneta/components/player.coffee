@@ -22,6 +22,11 @@ define [
         @shots        = []
         @model.player = @
 
+      coordinates : ->
+        coords = @model.coordinates
+        x : coords.x + 50
+        y : coords.y + 5
+
       paint : (canvas) ->
         @model.paint(canvas)
 
@@ -53,5 +58,5 @@ define [
       destroy : ->
         @model.destroy(@)
 
-      update : (arena, time) ->
-        @model.update(@, arena, time)
+      update : (arena, time, services) ->
+        @model.update(@, arena, time, services)

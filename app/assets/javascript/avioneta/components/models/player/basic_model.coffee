@@ -8,7 +8,7 @@ define [
 ], (_, Player, BaseModel, DestroyModel, PlayerBasicPainter, MovementVector) ->
   class Player.BasicModel extends BaseModel
     width : 100
-    height: 5
+    height: 10
 
     painter : PlayerBasicPainter
 

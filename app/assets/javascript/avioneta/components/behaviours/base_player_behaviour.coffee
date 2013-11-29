@@ -3,7 +3,7 @@ define [
   'avioneta/components/behaviours/destroyed_local_player_behaviour'
 ], (Behaviours, DestroyedLocalPlayerBehaviour) ->
   class Behaviours.BasePlayerBehaviour
-    update : (player, arena, time) ->
+    update : (player, arena, time, services) ->
       actions = []
 
       _.each arena.shots, (shot) =>
@@ -13,6 +13,13 @@ define [
       unless player.isAlive()
         actions.push new @destroyPlayerAction( player : player.id )
         return actions
+
+      coords = services.canvasMouseCoords.coordinates()
+      #console.log "MOUSE"
+      #console.log coords
+      #console.log "PLAYER"
+      #console.log player.coordinates()
+      console.log services.angleCalculator.angle(player.coordinates(), coords)
 
       if @_playerOutOfArena(player, arena) or @_playerCollidesWithOtherPlayers(player, arena)
         actions.push new @backtrackPlayerAction( player : player.id )

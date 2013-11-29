@@ -17,9 +17,13 @@ define [
   'avioneta/game',
   'extensions/string',
   'views/modals/no_seats_left_view',
-  'interests/no_seats_left_view_interests'
+  'interests/no_seats_left_view_interests',
+  'avioneta/services/mouse_coordinates',
+  'avioneta/services/canvas_mouse_coordinates',
+  'avioneta/services/canvas_coordinates',
+  'avioneta/services/angle_calculator'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
@@ -40,5 +44,15 @@ define [
         new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
         new NoSeatsLeftViewInterests(new NoSeatsLeftView(), bus)
 
-        game = new Game arena : arena, commandSync : CommandSync
-        GUI.init(game : game, canvas : $('canvas')[0].getContext("2d"))
+        canvas = $('canvas')[0]
+        canvasContext = canvas.getContext("2d")
+
+        gui = new GUI(canvas : canvasContext)
+
+        services =
+          commandSync : CommandSync
+          canvasMouseCoords : new CanvasMouseCoordinates( gui : gui, canvasCoordsService : new CanvasCoordinates(canvas : canvas), mouseCoordsService : new MouseCoordinates() )
+          angleCalculator : new AngleCalculator()
+
+        game = new Game arena : arena, services : services
+        gui.start(game)

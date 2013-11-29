@@ -10,14 +10,15 @@ define [
     messageCollectionSerializer : new MessageCollectionSerializer()
 
     constructor : (options) ->
-      @commandSync = options.commandSync
-      @arena = options.arena
+      @commandSync = options.services.commandSync
+      @services    = options.services
+      @arena       = options.arena
 
     update : ->
       @commandSync.get (messages) =>
         @messageCollectionSerializer.deserialize(messages).run(@arena)
 
-      @arena.update(@actions)
+      @arena.update(@actions, @services)
       @actions.run(@arena)
       @commandSync.push serialization if serialization = @collectionSerializer.serialize(@actions.commands())
       @actions.clear()
