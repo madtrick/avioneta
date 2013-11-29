@@ -14,13 +14,18 @@ define [
         actions.push new @destroyPlayerAction( player : player.id )
         return actions
 
-      coords = services.canvasMouseCoords.coordinates()
-      #console.log "MOUSE"
-      #console.log coords
-      #console.log "PLAYER"
-      #console.log player.coordinates()
-      degrees = services.angleCalculator.angle(player.coordinates(), coords)
-      actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
+      mouseCoords = services.canvasMouseCoords.coordinates()
+
+      # Calculate rotation only when moving the mouse
+      if not @mouseCoords
+        @mouseCoords = mouseCoords
+        degrees = services.angleCalculator.angle(player.coordinates(), @mouseCoords)
+        actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
+      else if mouseCoords.x isnt @mouseCoords.x or mouseCoords.y isnt @mouseCoords.y
+        @mouseCoords = mouseCoords
+        degrees = services.angleCalculator.angle(player.coordinates(), @mouseCoords)
+        actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
+
 
       if @_playerOutOfArena(player, arena) or @_playerCollidesWithOtherPlayers(player, arena)
         actions.push new @backtrackPlayerAction( player : player.id )
