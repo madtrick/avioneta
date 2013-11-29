@@ -19,7 +19,8 @@ define [
       #console.log coords
       #console.log "PLAYER"
       #console.log player.coordinates()
-      console.log services.angleCalculator.angle(player.coordinates(), coords)
+      degrees = services.angleCalculator.angle(player.coordinates(), coords)
+      actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
 
       if @_playerOutOfArena(player, arena) or @_playerCollidesWithOtherPlayers(player, arena)
         actions.push new @backtrackPlayerAction( player : player.id )

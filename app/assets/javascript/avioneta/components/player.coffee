@@ -60,3 +60,6 @@ define [
 
       update : (arena, time, services) ->
         @model.update(@, arena, time, services)
+
+      rorate : (args) ->
+        @model.rotate(args)

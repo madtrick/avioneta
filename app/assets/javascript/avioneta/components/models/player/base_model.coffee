@@ -10,6 +10,7 @@ define [
       @life        = options.life or 100
       @destroyed   = options.destroyed or false
       @behaviour   = options.behaviour
+      @rotation    = options.rotation
 
     paint : (canvas) ->
       @painter.paint(canvas, @)
@@ -37,3 +38,6 @@ define [
 
     update : (player, arena, time, services) ->
       @behaviour.update(player, arena, time, services)
+
+    rotate : ->
+      throw "Missing implementation"

@@ -13,7 +13,7 @@ define [
     painter : PlayerBasicPainter
 
     constructor : (options) ->
-      super(options)
+      super(_.extend options, rotation : 0)
 
     move : (args) ->
       @coordinates[args.axis] = args.value
@@ -40,3 +40,6 @@ define [
 
     lifePercentage : ->
       @life
+
+    rotate : (args) ->
+      @rotation =  args.degrees

@@ -11,3 +11,4 @@ define [
     movePlayerAction    : NullAction
     shootPlayerAction   : NullAction
     backtrackPlayerAction : NullAction
+    rotatePlayerAction : NullAction
