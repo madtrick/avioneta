@@ -24,8 +24,8 @@ define [
 
       coordinates : ->
         coords = @model.coordinates
-        x : coords.x + 50
-        y : coords.y + 5
+        #x : coords.x + 50
+        #y : coords.y + 5
 
       paint : (canvas) ->
         @model.paint(canvas)
@@ -35,6 +35,9 @@ define [
 
       boundingBox : ->
         @model.boundingBox()
+
+      relativeBB : ->
+        @model.relativeBB()
 
       collidesWith : (boundingBox) ->
         @model.collidesWith(boundingBox)
@@ -63,3 +66,6 @@ define [
 
       rorate : (args) ->
         @model.rotate(args)
+
+      rotation : ->
+        @model.rotation

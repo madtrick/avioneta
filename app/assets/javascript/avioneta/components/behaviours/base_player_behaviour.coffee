@@ -26,18 +26,19 @@ define [
         degrees = services.angleCalculator.angle(player.coordinates(), @mouseCoords)
         actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
 
+      console.log arena.isPlayerOutOfBoundings(player)
 
-      if @_playerOutOfArena(player, arena) or @_playerCollidesWithOtherPlayers(player, arena)
-        actions.push new @backtrackPlayerAction( player : player.id )
-      else
-        if input.isDown 'DOWN'
-          actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) + 1)
-        else if input.isDown 'UP'
-          actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) - 1)
-        else if input.isDown 'LEFT'
-          actions.push new @movePlayerAction player : player.id, axis : "x", value : (@_xCoordinate(player) - 1)
-        else if input.isDown 'RIGHT'
-          actions.push new @movePlayerAction player : player.id, axis : "x", value : (@_xCoordinate(player) + 1)
+      #if @_playerOutOfArena(player, arena) or @_playerCollidesWithOtherPlayers(player, arena)
+        #actions.push new @backtrackPlayerAction( player : player.id )
+      #else
+      if input.isDown 'DOWN'
+        actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) + 1)
+      else if input.isDown 'UP'
+        actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) - 1)
+      else if input.isDown 'LEFT'
+        actions.push new @movePlayerAction player : player.id, axis : "x", value : (@_xCoordinate(player) - 1)
+      else if input.isDown 'RIGHT'
+        actions.push new @movePlayerAction player : player.id, axis : "x", value : (@_xCoordinate(player) + 1)
 
 
       if (input.isDown('SPACE') and (time - player.previousShot > player.shotTreshold or (player.previousShot is undefined))) 

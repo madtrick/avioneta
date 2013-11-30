@@ -15,6 +15,12 @@ define [
     constructor : (options) ->
       super(_.extend options, rotation : 0)
 
+    relativeBB : ->
+      upperLeft : x : -@width/2, y : @height/2
+      upperRight: x : @width/2, y : @height/2
+      bottomLeft : x : -@width/2, y : -@height/2
+      bottomRight : x : @width/2, y : -@height/2
+
     move : (args) ->
       @coordinates[args.axis] = args.value
       @vector.update @coordinates
