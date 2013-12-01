@@ -22,6 +22,14 @@ define [
         @shots        = []
         @model.player = @
 
+      placement : ->
+        coordinates : @model.coordinates
+        rotation : @model.rotation
+
+      place : (placement) ->
+        @model.coordinates = placement.coordinates
+        @model.rotation = placement.rotation
+
       coordinates : ->
         coords = @model.coordinates
         #x : coords.x + 50

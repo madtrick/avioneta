@@ -7,11 +7,13 @@ define [
   'avioneta/actions/player/hit_local_player_action',
   'avioneta/actions/player/backtrack_player_action',
   'avioneta/actions/player/rotate_player_action'
-], (Behaviours, Base, MovePlayerAction, ShootPlayerAction, DestroyLocalPlayerAction, HitLocalPlayerAction, BacktrackPlayerAction, RotatePlayerAction) ->
+  'avioneta/actions/player/place_player_action'
+], (Behaviours, Base, MovePlayerAction, ShootPlayerAction, DestroyLocalPlayerAction, HitLocalPlayerAction, BacktrackPlayerAction, RotatePlayerAction, PlacePlayerAction) ->
   class Behaviours.LocalPlayerBehaviour extends Base
-    hitPlayerAction     : HitLocalPlayerAction
-    destroyPlayerAction : DestroyLocalPlayerAction
-    movePlayerAction    : MovePlayerAction
-    shootPlayerAction   : ShootPlayerAction
+    hitPlayerAction       : HitLocalPlayerAction
+    destroyPlayerAction   : DestroyLocalPlayerAction
+    movePlayerAction      : MovePlayerAction
+    shootPlayerAction     : ShootPlayerAction
     backtrackPlayerAction : BacktrackPlayerAction
-    rotatePlayerAction : RotatePlayerAction
+    rotatePlayerAction    : RotatePlayerAction
+    placePlayerAction     : PlacePlayerAction
