@@ -6,7 +6,6 @@ define [
     constructor : ->
 
     update : (player, arena, time, services) ->
-      console.log @placement
       if @placement
         @previousPlacement =
           coordinates :
@@ -34,10 +33,10 @@ define [
 
 
       #console.log arena.isPlayerOutOfBoundings(player)
-      console.log "PREV"
-      console.log "#{@previousPlacement.coordinates.x} , #{@previousPlacement.coordinates.y} , #{@previousPlacement.rotation}"
-      console.log "CUR"
-      console.log "#{@placement.coordinates.x} , #{@placement.coordinates.y} , #{@placement.rotation}"
+      #console.log "PREV"
+      #console.log "#{@previousPlacement.coordinates.x} , #{@previousPlacement.coordinates.y} , #{@previousPlacement.rotation}"
+      #console.log "CUR"
+      #console.log "#{@placement.coordinates.x} , #{@placement.coordinates.y} , #{@placement.rotation}"
 
       if arena.isPlayerOutOfBoundings(player)
         actions.push new @placePlayerAction player : player.id, placement : @previousPlacement

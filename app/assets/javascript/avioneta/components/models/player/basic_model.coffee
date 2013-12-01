@@ -4,13 +4,16 @@ define [
   'avioneta/components/models/player/base_model',
   'avioneta/components/models/player/destroy_model',
   'avioneta/painters/player_basic_painter',
+  'avioneta/painters/circle_player_painter',
   'avioneta/components/utils/movement_vector'
-], (_, Player, BaseModel, DestroyModel, PlayerBasicPainter, MovementVector) ->
+], (_, Player, BaseModel, DestroyModel, PlayerBasicPainter, CirclePlayerPainter, MovementVector) ->
   class Player.BasicModel extends BaseModel
     width : 100
     height: 10
+    radius: 16
 
-    painter : PlayerBasicPainter
+    #painter : PlayerBasicPainter
+    painter : CirclePlayerPainter
 
     constructor : (options) ->
       super(_.extend options, rotation : 0)
