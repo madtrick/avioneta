@@ -1,30 +1,24 @@
 define [
+  'underscore'
+  'avioneta/components/models/base'
   'avioneta/components/models/shot',
   'avioneta/painters/shot_basic_painter',
   'avioneta/components/behaviours/shot/local',
   'avioneta/components/behaviours/shot/remote',
   'avioneta/components/utils/bounding_circle'
-], (Shot, ShotBasicPainter, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
-  class Shot.BasicModel
+], (_, Base, Shot, ShotBasicPainter, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
+  class Shot.BasicModel extends Base
     width  : 3
     height : 3
     radius : 3
 
-    painter : ShotBasicPainter
+    speed : 1
 
     constructor : (options) ->
-      @boundings   = new BoundingCircle( radius : @radius )
-      @painter     = new @painter()
-      @coordinates = x : options.coordinates.x, y : options.coordinates.y
-      @rotation    = options.rotation
-      @behaviour   = if options.remote then new RemoteBehaviour() else new LocalBehaviour()
-      @speed       = 1
-
-    paint : (canvas) ->
-      @painter.paint(canvas, @)
-
-    update : (shot, arena, date, services)->
-      @behaviour.update(shot, arena, date, services)
+      super _.extend options,
+        painter   : new ShotBasicPainter()
+        boundings : new BoundingCircle(radius : @radius)
+        behaviour : new LocalBehaviour()
 
     move : ->
       # I have to negate the angle because of the flipped coordinate
