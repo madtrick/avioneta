@@ -2,8 +2,8 @@ define [
   'avioneta/orders',
   'avioneta/components/player',
   'avioneta/components/models/player/basic_model',
-  'avioneta/components/behaviours/remote_player_behaviour',
-  'avioneta/components/behaviours/local_player_behaviour'
+  'avioneta/components/behaviours/player/remote',
+  'avioneta/components/behaviours/player/local'
 ], (Orders, Player, BasicModel, RemotePlayerBehaviour, LocalPlayerBehaviour) ->
   class Orders.RegisterPlayerOrder
     constructor : (@options) ->
