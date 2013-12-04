@@ -37,6 +37,7 @@ requirejs.config
       "shoot_player_order_serializer"
       "disconnect_player_order_serializer"
       "destroy_player_order_serializer"
+      "rotate_player_order_serializer"
     ].map (path) -> "avioneta/serializers/#{path}"
 
     require paths

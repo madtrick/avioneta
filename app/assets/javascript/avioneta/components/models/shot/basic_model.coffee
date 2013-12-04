@@ -1,39 +1,38 @@
 define [
   'avioneta/components/models/shot',
   'avioneta/painters/shot_basic_painter',
-  'avioneta/components/utils/movement_vector',
   'avioneta/components/behaviours/shot/local',
   'avioneta/components/behaviours/shot/remote',
-], (Shot, ShotBasicPainter, MovementVector, LocalBehaviour, RemoteBehaviour) ->
+  'avioneta/components/utils/bounding_circle'
+], (Shot, ShotBasicPainter, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
   class Shot.BasicModel
-    width : 3
-    height: 3
+    width  : 3
+    height : 3
+    radius : 3
 
     painter : ShotBasicPainter
 
     constructor : (options) ->
+      @boundings   = new BoundingCircle( radius : @radius )
       @painter     = new @painter()
-      @coordinates = {x : options.x, y : options.y}
-      @vector      = new MovementVector(x : @coordinates.x, y : @coordinates.y)
+      @coordinates = x : options.coordinates.x, y : options.coordinates.y
+      @rotation    = options.rotation
       @behaviour   = if options.remote then new RemoteBehaviour() else new LocalBehaviour()
       @speed       = 1
 
     paint : (canvas) ->
       @painter.paint(canvas, @)
 
-    update : (shot, arena)->
-      @behaviour.update(shot, arena)
+    update : (shot, arena, date, services)->
+      @behaviour.update(shot, arena, date, services)
 
     move : ->
-      @coordinates.y += @speed
+      # I have to negate the angle because of the flipped coordinate
+      # system canvas uses. (this is leaking details from canvas implementation)
+      dx = @speed * Math.cos(-@rotation)
+      dy = @speed * Math.sin(-@rotation)
+      @coordinates.x += dx
+      @coordinates.y += dy
 
     hit : (shot) ->
       shot.active = false
-
-    boundingBox : ->
-      upperLeft : x : @coordinates.x, y : @coordinates.y
-      upperRight: x : (@coordinates.x + @width), y : @coordinates.y
-      lowerLeft : x : @coordinates.x, y : (@coordinates.y + @height)
-      lowerRight: x : (@coordinates.x + @width), y : (@coordinates.y + @height)
-      height : @height
-      width  : @width

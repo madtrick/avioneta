@@ -3,4 +3,3 @@ define ['avioneta/painters'], (Painters) ->
     paint : (canvas, model) ->
       canvas.fillStyle = "#ddd"
       canvas.fillRect(model.coordinates.x, model.coordinates.y, model.width, model.height)
-

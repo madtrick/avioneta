@@ -21,9 +21,10 @@ define [
   'avioneta/services/mouse_coordinates',
   'avioneta/services/canvas_mouse_coordinates',
   'avioneta/services/canvas_coordinates',
-  'avioneta/services/angle_calculator'
+  'avioneta/services/angle_calculator',
+  'avioneta/services/collision_detection'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator, CollisionDetection) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
@@ -53,6 +54,7 @@ define [
           commandSync : CommandSync
           canvasMouseCoords : new CanvasMouseCoordinates( gui : gui, canvasCoordsService : new CanvasCoordinates(canvas : canvas), mouseCoordsService : new MouseCoordinates() )
           angleCalculator : new AngleCalculator()
+          collision_detection : new CollisionDetection()
 
         game = new Game arena : arena, services : services
         gui.start(game)

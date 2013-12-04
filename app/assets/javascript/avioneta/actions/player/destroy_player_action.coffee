@@ -3,5 +3,5 @@ define [
   'avioneta/actions/base',
   ], (Action, Base) ->
   class DestroyPlayerAction extends Base
-    run : ->
+    run : (arena) ->
       arena.getPlayer(@options.player).destroy()

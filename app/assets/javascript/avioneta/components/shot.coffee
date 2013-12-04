@@ -15,11 +15,17 @@ define [
     move : ->
       @model.move()
 
-    boundingBox : ->
-      @model.boundingBox()
+    coordinates : ->
+      @model.coordinates
 
-    update : (arena)->
-      @model.update(@, arena)
+    rotation : ->
+      @model.rotation
+
+    boundings : ->
+      @model.boundings
+
+    update : (arena, date, services) ->
+      @model.update(@, arena, date, services)
 
     hit : ->
       @model.hit(@)

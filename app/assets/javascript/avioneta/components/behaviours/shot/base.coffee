@@ -5,11 +5,11 @@ define [
   'avioneta/actions/shot/shot_hit_action'
   ], (Shot, MoveShotAction, RemoveShotAction, ShotHitAction) ->
   class Shot.Base
-    update : (shot, arena) ->
+    update : (shot, arena, date, services) ->
       if @_shotIsOutOfArena(shot, arena)
         return new RemoveShotAction( shot : shot.id )
 
-      if player = @_shotHitsPlayer(shot, arena)
+      if player = @_shotHitsPlayer(shot, arena, services)
         actions = []
         actions.push new ShotHitAction( shot : shot.id )
         actions.push new RemoveShotAction( shot : shot.id )
@@ -18,8 +18,8 @@ define [
       new MoveShotAction( shot : shot.id )
 
     _shotIsOutOfArena : (shot, arena) ->
-      shot.boundingBox().upperLeft.y > arena.height
+      arena.isElementOutOfArena(shot.coordinates(), shot.boundings())
 
-    _shotHitsPlayer : (shot, arena) ->
+    _shotHitsPlayer : (shot, arena, services) ->
       _.find arena.players, (player) ->
-        player isnt shot.player and player.collidesWith(shot.boundingBox())
+        player isnt shot.player and services.collision_detection.detect(player.coordinates(), player.boundings(), shot.coordinates(), shot.boundings())

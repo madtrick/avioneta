@@ -7,10 +7,12 @@ define [
     constructor : (@options) ->
 
     run : (arena) ->
+      player = arena.getPlayer(@options.id)
       shot = new Shot(
         id     : @options.shot_id
-        player : arena.getPlayer(@options.id)
+        player : player
         remote : undefined
-        model : new BasicModel(x : @options.x, y : @options.y))
+        model : new BasicModel(coordinates : player.coordinates(), rotation : player.rotation())
+      )
 
       arena.addShot shot

@@ -1,15 +1,14 @@
 define [
   'avioneta/components',
-  'avioneta/components/base_component',
   'avioneta/components/shot',
   'avioneta/serializers/player_serializer',
   'avioneta/commands/move_player_command'
   'avioneta/commands/shoot_player_command'
   'input',
   'event_bus'],
-  (Components, BaseComponent, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
+  (Components, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
 
-    class Components.Player extends BaseComponent
+    class Components.Player
       shotTreshold : 100
       serializer   : PlayerSerializer
 
@@ -19,7 +18,6 @@ define [
         @id           = attrs.id
         @color        = attrs.color
         @name         = attrs.name
-        @shots        = []
         @model.player = @
 
       placement : ->
@@ -31,9 +29,7 @@ define [
         @model.rotation = placement.rotation
 
       coordinates : ->
-        coords = @model.coordinates
-        #x : coords.x + 50
-        #y : coords.y + 5
+        @model.coordinates
 
       paint : (canvas) ->
         @model.paint(canvas)
@@ -41,17 +37,8 @@ define [
       move : (args) ->
         @model.move(args)
 
-      boundingBox : ->
-        @model.boundingBox()
-
-      relativeBB : ->
-        @model.relativeBB()
-
-      collidesWith : (boundingBox) ->
-        @model.collidesWith(boundingBox)
-
-      backtrack : ->
-        @model.backtrack()
+      boundings : ->
+        @model.boundings
 
       hit : ->
         @model.hit()
@@ -63,16 +50,13 @@ define [
       isAlive : ->
         @model.isAlive()
 
-      isDestroyed : ->
-        @model.isDestroyed()
-
       destroy : ->
         @model.destroy(@)
 
       update : (arena, time, services) ->
         @model.update(@, arena, time, services)
 
-      rorate : (args) ->
+      rotate : (args) ->
         @model.rotate(args)
 
       rotation : ->

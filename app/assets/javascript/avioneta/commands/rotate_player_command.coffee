@@ -3,6 +3,6 @@ define [
   'avioneta/commands',
   'avioneta/commands/base_command'
 ], (_, Commands, BaseCommand) ->
-  class Commands.DestroyPlayerCommand extends BaseCommand
+  class Commands.RotatePlayerCommand extends BaseCommand
     constructor : (options) ->
-      super _.extend {}, data : options, name : "DestroyPlayerCommand"
+      super _.extend {}, data : options, name : "RotatePlayerCommand"

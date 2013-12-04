@@ -1,4 +1,7 @@
-define ['avioneta/components/behaviours', 'avioneta/commands/null_command'], (Behaviours, NullCommand) ->
+define [
+  'avioneta/components/behaviours',
+  'avioneta/actions/null_action'
+], (Behaviours, NullAction) ->
   class Behaviours.DestroyedPlayerBehaviours
     constructor : ->
       @cycles = 0
@@ -9,4 +12,4 @@ define ['avioneta/components/behaviours', 'avioneta/commands/null_command'], (Be
 
       @cycles +=1
 
-      new NullCommand()
+      new NullAction()

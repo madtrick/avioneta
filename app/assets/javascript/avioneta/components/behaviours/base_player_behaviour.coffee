@@ -23,7 +23,8 @@ define [
       actions = []
 
       _.each arena.shots, (shot) =>
-        if player isnt shot.player and player.collidesWith(shot.boundingBox())
+        if player isnt shot.player and services.collision_detection.detect(player.coordinates(), player.boundings(), shot.coordinates(), shot.boundings())
+          console.log "Player hitted"
           actions.push new @hitPlayerAction( player : player.id, shot : shot.id )
 
       unless player.isAlive()
@@ -31,28 +32,19 @@ define [
         return actions
 
 
-
-      #console.log arena.isPlayerOutOfBoundings(player)
-      #console.log "PREV"
-      #console.log "#{@previousPlacement.coordinates.x} , #{@previousPlacement.coordinates.y} , #{@previousPlacement.rotation}"
-      #console.log "CUR"
-      #console.log "#{@placement.coordinates.x} , #{@placement.coordinates.y} , #{@placement.rotation}"
-
-      if arena.isPlayerOutOfBoundings(player)
+      if arena.isElementOutOfArena(player.coordinates(), player.boundings()) or @_playerCollidesWithOtherPlayers(player, arena, services)
         actions.push new @placePlayerAction player : player.id, placement : @previousPlacement
-      #if @_playerOutOfArena(player, arena) or @_playerCollidesWithOtherPlayers(player, arena)
-        #actions.push new @backtrackPlayerAction( player : player.id )
       else
         # Calculate rotation only when moving the mouse
         mouseCoords = services.canvasMouseCoords.coordinates()
         if not @mouseCoords
           @mouseCoords = mouseCoords
           degrees = services.angleCalculator.angle(player.coordinates(), @mouseCoords)
-          actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
+          actions.push new @rotatePlayerAction( player : player.id, rotation : degrees )
         else if mouseCoords.x isnt @mouseCoords.x or mouseCoords.y isnt @mouseCoords.y
           @mouseCoords = mouseCoords
           degrees = services.angleCalculator.angle(player.coordinates(), @mouseCoords)
-          actions.push new @rotatePlayerAction( player : player.id, degrees : degrees )
+          actions.push new @rotatePlayerAction( player : player.id, rotation : degrees )
 
         if input.isDown 'DOWN'
           actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) + 1)
@@ -66,12 +58,12 @@ define [
 
       if (input.isDown('SPACE') and (time - player.previousShot > player.shotTreshold or (player.previousShot is undefined))) 
         player.previousShot = time
-        actions.push new @shootPlayerAction player : player.id, x : @_xCoordinate(player), y : @_yCoordinate(player)
+        actions.push new @shootPlayerAction player : player.id
 
       actions
 
     destroy : ->
-      new DestroyedLocalPlayerBehaviour()
+      new @destroyedPlayerBehaviour()
 
     _xCoordinate : (player) ->
       player.model.coordinates.x
@@ -79,13 +71,6 @@ define [
     _yCoordinate : (player) ->
       player.model.coordinates.y
 
-    _playerOutOfArena : (player, arena) ->
-      boundingBox = player.boundingBox()
-      boundingBox.upperLeft.x < 0 or
-        boundingBox.upperLeft.y < 0 or
-        boundingBox.lowerLeft.y > arena.height or
-        boundingBox.lowerRight.x > arena.width
-
-    _playerCollidesWithOtherPlayers : (player, arena) ->
+    _playerCollidesWithOtherPlayers : (player, arena, services) ->
       _.find arena.players, (p) ->
-        true if p isnt player and player.collidesWith(p.boundingBox())
+        true if p isnt player and services.collision_detection.detect(player.coordinates(), player.boundings(), p.coordinates(), p.boundings())
