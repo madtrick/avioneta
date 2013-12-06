@@ -3,10 +3,11 @@ define [
   'avioneta/components/models/player/base_model'
   'avioneta/components/models/player',
   'avioneta/components/models/player/destroy_model',
-  'avioneta/painters/circle_player_painter',
   'avioneta/components/utils/bounding_circle',
-  'avioneta/mixins/components/player/common'
-], (_, BaseModel, Player, DestroyModel, CirclePlayerPainter, BoundingCircle, Common) ->
+  'avioneta/components/utils/sprite_area_config',
+  'avioneta/mixins/components/player/common',
+  'avioneta/painters/sprite_painter'
+], (_, BaseModel, Player, DestroyModel,  BoundingCircle, SpriteArenaConfig, Common, SpritePainter) ->
   class Player.BasicModel extends BaseModel
     radius: 16
 
@@ -15,7 +16,15 @@ define [
         life      : 100
         rotation  : 0
         boundings : new BoundingCircle( radius : @radius )
-        painter   : new CirclePlayerPainter()
+        painter : new SpritePainter()
+
+      @spriteConfig = new SpriteArenaConfig
+        sprite : $("[data-behaviour~=image-resource]")[0]
+        coordinates :
+          sprite : x : 0, y :0
+          canvas : x : -24, y : -24
+        width : 48
+        height: 48
 
     move : (args) ->
       @coordinates[args.axis] = args.value

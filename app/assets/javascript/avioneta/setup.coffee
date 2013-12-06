@@ -22,39 +22,42 @@ define [
   'avioneta/services/canvas_mouse_coordinates',
   'avioneta/services/canvas_coordinates',
   'avioneta/services/angle_calculator',
-  'avioneta/services/collision_detection'
+  'avioneta/services/collision_detection',
+  'avioneta/services/bulk_image_loader'
 ],
-  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator, CollisionDetection) ->
+  ($, Avioneta, GUI, Arena, Player, CommandSync, CollectionSerializer, BasicModel, Configurator, Scoreboard, EventBus, ScoreBoardInterests, PlayerDestroyedView, PlayerDestroyedInterests, RegisterPlayerCommand, Game, String, NoSeatsLeftView, NoSeatsLeftViewInterests, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator, CollisionDetection, BulkImageLoader) ->
     class Avioneta.Setup
       @init : ->
         CommandSync.init()
 
-        #configurator = new Configurator($.Deferred())
-        #configurator.done ->
-        #commands = new CommandCollection()
-        commands = []
-        arena    = new Arena(width : 400, height : 400)
-        command  = new RegisterPlayerCommand()
-        bus      = EventBus
-        sc = new Scoreboard(el : '.scoreboard').render()
+        new BulkImageLoader(["images/avioneta/plane-rotated.png"]).load()
+          .done  (image) ->
+            #configurator = new Configurator($.Deferred())
+            #configurator.done ->
+            #commands = new CommandCollection()
+            commands = []
+            arena    = new Arena(width : 400, height : 400)
+            command  = new RegisterPlayerCommand()
+            bus      = EventBus
+            sc = new Scoreboard(el : '.scoreboard').render()
 
-        commands.push command
-        CommandSync.push(new CollectionSerializer().serialize(commands))
+            commands.push command
+            CommandSync.push(new CollectionSerializer().serialize(commands))
 
-        new ScoreBoardInterests(sc, bus)
-        new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
-        new NoSeatsLeftViewInterests(new NoSeatsLeftView(), bus)
+            new ScoreBoardInterests(sc, bus)
+            new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
+            new NoSeatsLeftViewInterests(new NoSeatsLeftView(), bus)
 
-        canvas = $('canvas')[0]
-        canvasContext = canvas.getContext("2d")
+            canvas = $('canvas')[0]
+            canvasContext = canvas.getContext("2d")
 
-        gui = new GUI(canvas : canvasContext)
+            gui = new GUI(canvas : canvasContext)
 
-        services =
-          commandSync : CommandSync
-          canvasMouseCoords : new CanvasMouseCoordinates( gui : gui, canvasCoordsService : new CanvasCoordinates(canvas : canvas), mouseCoordsService : new MouseCoordinates() )
-          angleCalculator : new AngleCalculator()
-          collision_detection : new CollisionDetection()
+            services =
+              commandSync : CommandSync
+              canvasMouseCoords : new CanvasMouseCoordinates( gui : gui, canvasCoordsService : new CanvasCoordinates(canvas : canvas), mouseCoordsService : new MouseCoordinates() )
+              angleCalculator : new AngleCalculator()
+              collision_detection : new CollisionDetection()
 
-        game = new Game arena : arena, services : services
-        gui.start(game)
+            game = new Game arena : arena, services : services
+            gui.start(game)
