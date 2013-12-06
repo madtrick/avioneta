@@ -8,7 +8,7 @@ define [
   'avioneta/components/parts/cannon',
   'avioneta/mixins/components/player/common',
   'avioneta/painters/sprite_painter'
-], (_, BaseModel, Player, DestroyModel,  BoundingCircle, SpriteArenaConfig, Cannon, Common, SpritePainter) ->
+], (_, BaseModel, Player, DestroyModel,  BoundingCircle, SpriteAreaConfig, Cannon, Common, SpritePainter) ->
   class Player.BasicModel extends BaseModel
     radius: 16
 
@@ -20,7 +20,7 @@ define [
         painter : new SpritePainter()
 
       @parts = { cannons :[new Cannon(coordinates : x: 14, y : 0)]}
-      @spriteConfig = new SpriteArenaConfig
+      @spriteConfig = new SpriteAreaConfig
         sprite : $("[data-behaviour~=image-resource]")[0]
         coordinates :
           sprite : x : 0, y :0

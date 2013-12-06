@@ -6,6 +6,7 @@ define ['avioneta/services', 'avioneta/services/matrix_product'], (Services, Mat
     @_buildMatrix : (translationVector) ->
       [
         [1, 0, translationVector[0]],
-        [0,-1, translationVector[1]]
+        [0,-1, translationVector[1]],
+        [0, 0, 1]
       ]
 
