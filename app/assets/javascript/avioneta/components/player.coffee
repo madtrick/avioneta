@@ -53,6 +53,9 @@ define [
       destroy : ->
         @model.destroy(@)
 
+      parts : ->
+        @model.parts
+
       update : (arena, time, services) ->
         @model.update(@, arena, time, services)
 
