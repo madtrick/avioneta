@@ -43,7 +43,7 @@ define [
       @_painterConfig or @_painterConfig = new SpriteConfig
         sprite : $("[data-behaviour~=image-resource]")[0]
         coordinates :
-          sprite : x : 0, y :0
+          sprite : x : 404, y :2
           canvas : x : -24, y : -24
         width : 48
         height: 48

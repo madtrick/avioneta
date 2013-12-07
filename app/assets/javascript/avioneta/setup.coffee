@@ -30,7 +30,7 @@ define [
       @init : ->
         CommandSync.init()
 
-        new BulkImageLoader(["images/avioneta/plane-rotated.png"]).load()
+        new BulkImageLoader(["images/avioneta/sprite.png"]).load()
           .done  (image) ->
             #configurator = new Configurator($.Deferred())
             #configurator.done ->
@@ -48,14 +48,16 @@ define [
             new PlayerDestroyedInterests(new PlayerDestroyedView(), bus)
             new NoSeatsLeftViewInterests(new NoSeatsLeftView(), bus)
 
-            canvas = $('canvas')[0]
-            canvasContext = canvas.getContext("2d")
+            mainCanvas = $('.main-canvas')[0]
+            mainCanvasContext = mainCanvas.getContext("2d")
+            backgroundCanvas = $('.background-canvas')[0]
+            backgroundCanvasContext = backgroundCanvas.getContext("2d")
 
-            gui = new GUI(canvas : canvasContext)
+            gui = new GUI(mainCanvas : mainCanvasContext, backgroundCanvas : backgroundCanvasContext)
 
             services =
               commandSync : CommandSync
-              canvasMouseCoords : new CanvasMouseCoordinates( gui : gui, canvasCoordsService : new CanvasCoordinates(canvas : canvas), mouseCoordsService : new MouseCoordinates() )
+              canvasMouseCoords : new CanvasMouseCoordinates( gui : gui, canvasCoordsService : new CanvasCoordinates(canvas : mainCanvas), mouseCoordsService : new MouseCoordinates() )
               angleCalculator : new AngleCalculator()
               collision_detection : new CollisionDetection()
 

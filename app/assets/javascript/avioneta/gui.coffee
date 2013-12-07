@@ -1,4 +1,9 @@
-define ['avioneta'], (Avioneta) ->
+define [
+  'avioneta',
+  'avioneta/painters/painter',
+  'avioneta/painters/types/sprite',
+  'avioneta/painters/utils/sprite_config'
+], (Avioneta, Painter, Sprite, SpriteConfig) ->
     class Avioneta.GUI
       #
       # This game loop is strongly based
@@ -15,7 +20,8 @@ define ['avioneta'], (Avioneta) ->
       #  requestAnimationFrame(new @(attrs).loop)
 
       constructor : (attrs) ->
-        @_canvas        = attrs.canvas
+        @_mainCanvas        = attrs.mainCanvas
+        @_backgroundCanvas  = attrs.backgroundCanvas
         #@_game = attrs.game
 
         @_initTickCount()
@@ -23,6 +29,7 @@ define ['avioneta'], (Avioneta) ->
 
       start : (game) ->
         @_game = game
+        @_paintBackground()
         requestAnimationFrame(@loop)
 
       loop : =>
@@ -37,8 +44,8 @@ define ['avioneta'], (Avioneta) ->
         @render()
 
       render : ->
-        @_canvas.clearRect(0, 0, @_canvas.canvas.width, @_canvas.canvas.height)
-        @_game.render(@_canvas)
+        @_mainCanvas.clearRect(0, 0, @_mainCanvas.canvas.width, @_mainCanvas.canvas.height)
+        @_game.render(@_mainCanvas)
 
       update : ->
         @_game.update()
@@ -48,3 +55,16 @@ define ['avioneta'], (Avioneta) ->
 
       _initTickCount : ->
         @_initialTickCount = Date.now()
+
+      _paintBackground : ->
+        painter = new Painter(type : new Sprite())
+        painter.paint( @_paintBackgroundOptions(), @_backgroundCanvas )
+
+      _paintBackgroundOptions : ->
+        type : new SpriteConfig
+                  sprite : $("[data-behaviour~=image-resource]")[0]
+                  coordinates :
+                    sprite : x : 2, y : 2
+                    canvas : x : 0, y : 0
+                  width : 400
+                  height: 400
