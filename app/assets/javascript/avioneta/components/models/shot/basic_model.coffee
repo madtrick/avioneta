@@ -3,11 +3,11 @@ define [
   'avioneta/components/models/base'
   'avioneta/components/models/shot',
   'avioneta/painters/painter',
-  'avioneta/painters/types/rectangle',
+  'avioneta/painters/types/circle',
   'avioneta/components/behaviours/shot/local',
   'avioneta/components/behaviours/shot/remote',
   'avioneta/components/utils/bounding_circle'
-], (_, Base, Shot, Painter, Rectangle, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
+], (_, Base, Shot, Painter, Circle, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
   class Shot.BasicModel extends Base
     width  : 3
     height : 3
@@ -17,7 +17,7 @@ define [
 
     constructor : (options) ->
       super _.extend options,
-        painter   : new Painter( type : new Rectangle() )
+        painter   : new Painter( type : new Circle() )
         boundings : new BoundingCircle(radius : @radius)
         behaviour : new LocalBehaviour()
 
@@ -34,7 +34,6 @@ define [
 
     paintOptions : ->
       type :
-        topLeft : x : @coordinates.x, y : @coordinates.y
-        width : @width
-        height: @height
-        color : "#0ee"
+        coordinates : @coordinates
+        radius      : @radius
+        color       : "red"
