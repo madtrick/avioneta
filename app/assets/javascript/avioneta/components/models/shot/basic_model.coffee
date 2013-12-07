@@ -12,7 +12,7 @@ define [
     height : 3
     radius : 3
 
-    speed : 1
+    speed : 2
 
     constructor : (options) ->
       super _.extend options,

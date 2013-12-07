@@ -9,7 +9,7 @@ define [
   (Components, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
 
     class Components.Player
-      shotTreshold : 1000
+      shotTreshold : 500
       serializer   : PlayerSerializer
 
       constructor : (attrs) ->
