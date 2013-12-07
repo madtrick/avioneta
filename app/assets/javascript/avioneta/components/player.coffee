@@ -9,7 +9,7 @@ define [
   (Components, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
 
     class Components.Player
-      shotTreshold : 100
+      shotTreshold : 1000
       serializer   : PlayerSerializer
 
       constructor : (attrs) ->
@@ -20,6 +20,34 @@ define [
         @name         = attrs.name
         @model.player = @
 
+      boundings : ->
+        @model.boundings
+
+      coordinates : ->
+        @model.coordinates
+
+      destroy : ->
+        @model.destroy(@)
+
+      hit : ->
+        @model.hit()
+        EventBus.trigger "scoreboard.update", id : @id, value : @model.lifePercentage()
+
+      isAlive : ->
+        @model.isAlive()
+
+      life : ->
+        @model.life
+
+      move : (args) ->
+        @model.move(args)
+
+      parts : ->
+        @model.parts
+
+      paint : (canvas) ->
+        @model.paint(canvas)
+
       placement : ->
         coordinates : @model.coordinates
         rotation : @model.rotation
@@ -28,39 +56,11 @@ define [
         @model.coordinates = placement.coordinates
         @model.rotation = placement.rotation
 
-      coordinates : ->
-        @model.coordinates
-
-      paint : (canvas) ->
-        @model.paint(canvas)
-
-      move : (args) ->
-        @model.move(args)
-
-      boundings : ->
-        @model.boundings
-
-      hit : ->
-        @model.hit()
-        EventBus.trigger "scoreboard.update", id : @id, value : @model.lifePercentage()
-
-      life : ->
-        @model.life
-
-      isAlive : ->
-        @model.isAlive()
-
-      destroy : ->
-        @model.destroy(@)
-
-      parts : ->
-        @model.parts
-
-      update : (arena, time, services) ->
-        @model.update(@, arena, time, services)
-
       rotate : (args) ->
         @model.rotate(args)
 
       rotation : ->
         @model.rotation
+
+      update : (arena, time, services) ->
+        @model.update(@, arena, time, services)
