@@ -2,11 +2,12 @@ define [
   'underscore'
   'avioneta/components/models/base'
   'avioneta/components/models/shot',
-  'avioneta/painters/shot_basic_painter',
+  'avioneta/painters/painter',
+  'avioneta/painters/types/rectangle',
   'avioneta/components/behaviours/shot/local',
   'avioneta/components/behaviours/shot/remote',
   'avioneta/components/utils/bounding_circle'
-], (_, Base, Shot, ShotBasicPainter, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
+], (_, Base, Shot, Painter, Rectangle, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
   class Shot.BasicModel extends Base
     width  : 3
     height : 3
@@ -16,7 +17,7 @@ define [
 
     constructor : (options) ->
       super _.extend options,
-        painter   : new ShotBasicPainter()
+        painter   : new Painter( type : new Rectangle() )
         boundings : new BoundingCircle(radius : @radius)
         behaviour : new LocalBehaviour()
 
@@ -30,3 +31,10 @@ define [
 
     hit : (shot) ->
       shot.active = false
+
+    paintOptions : ->
+      type :
+        topLeft : x : @coordinates.x, y : @coordinates.y
+        width : @width
+        height: @height
+        color : "#0ee"

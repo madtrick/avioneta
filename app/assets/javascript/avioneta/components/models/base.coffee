@@ -13,7 +13,7 @@ define [
       throw "Missing implementation"
 
     paint : (canvas) ->
-      @painter.paint(canvas, @)
+      @painter.paint(@paintOptions(), canvas)
 
     update : (element, arena, time, services) ->
       @behaviour.update(element, arena, time, services)
