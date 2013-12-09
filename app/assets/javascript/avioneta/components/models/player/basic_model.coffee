@@ -36,9 +36,6 @@ define [
         behaviour : @behaviour.destroy()
         boundings : @boundings
 
-    lifePercentage : ->
-      @life
-
     painterConfig : ->
       @_painterConfig or @_painterConfig = new SpriteConfig
         sprite : $("[data-behaviour~=image-resource]")[0]

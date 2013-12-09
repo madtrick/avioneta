@@ -16,8 +16,6 @@ define [
 
     hit : ->
 
-    lifePercentage : -> 0
-
     paintOptions : ->
       type :
         color : "red"

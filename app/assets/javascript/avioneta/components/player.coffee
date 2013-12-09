@@ -31,7 +31,7 @@ define [
 
       hit : ->
         @model.hit()
-        EventBus.trigger "scoreboard.update", id : @id, value : @model.lifePercentage()
+        EventBus.trigger "scoreboard.update", id : @id, value : @model.life
 
       isAlive : ->
         @model.isAlive()
