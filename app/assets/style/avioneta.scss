@@ -1,9 +1,36 @@
+.scoreboard {
+  float : right;
+  margin : 0 30px 0 0;
+  display : flex;
+  flex-direction : column;
+
+  .scoreboard-item {
+    width : 300px;
+    font-family : 'Black Ops One', cursive;
+    font-size : 18px;
+    padding : 5px 10px 0 10px;
+    margin-bottom: 4px;
+
+    &.local {
+      order : 1;
+      background-color : #d0e7ff;
+    }
+
+    &.remote {
+      order : 2;
+      background-color: #fde7ad;
+    }
+  }
+}
+
 .canvases {
+  width : 400px;
+  margin : 0 auto;
   position : relative;
 }
+
 canvas {
   position : absolute;
-  border: 2px solid black;
 
   .main-canvas {
     z-index : 10;

@@ -1,10 +1,14 @@
 define ['views', 'backbone', 'jst!templates/scoreboard/item'], (Scoreboard, Backbone, template) ->
   class Scoreboard.Item extends Backbone.View
-    PROGRESS_BAR_CLASS = "progress-bar"
+    LIFE_PROGRESS_BAR_CLASS   = "progress-bar-success"
+    DAMAGE_PROGRESS_BAR_CLASS = "progress-bar-danger"
 
-    initialize : (@options = options) ->
+    className : 'scoreboard-item'
+
+    initialize : (@options) ->
     render : ->
       @$el.html template(@options)
+      @$el.addClass if @options.remote then "remote" else "local"
       @$el.find("span").css color : @options.color
       @
 
@@ -12,4 +16,6 @@ define ['views', 'backbone', 'jst!templates/scoreboard/item'], (Scoreboard, Back
       @$el.remove()
 
     update : (options)->
-      @$el.find(".#{PROGRESS_BAR_CLASS}").css width : "#{options.value}%"
+      @$el.find(".#{DAMAGE_PROGRESS_BAR_CLASS}").css width : "#{100 - options.value}%"
+      @$el.find(".#{LIFE_PROGRESS_BAR_CLASS}").css width : "#{options.value}%"
+
