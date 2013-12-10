@@ -46,5 +46,5 @@ requirejs.config
       window.JST = {} # Required or JST will crash (ñapa)
 
 
-      require ['avioneta/setup'], (Setup) -> 
-        Setup.init()
+      require ['init'], (Init) ->
+        Init.init()
