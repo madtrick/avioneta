@@ -9,7 +9,7 @@ define ['views', 'backbone', 'jst!templates/scoreboard/item'], (Scoreboard, Back
     render : ->
       @$el.html template(@options)
       @$el.addClass if @options.remote then "remote" else "local"
-      @$el.find("span").css color : @options.color
+      @update @options
       @
 
     destroy : ->
