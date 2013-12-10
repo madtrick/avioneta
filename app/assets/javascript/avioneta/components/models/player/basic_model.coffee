@@ -17,7 +17,6 @@ define [
 
     constructor : (options) ->
       super _.extend options,
-        life      : 100
         rotation  : 0
         boundings : new BoundingCircle( radius : @radius )
         painter   : new Painter(type : new Sprite(), transformations : @painterTransformations())
