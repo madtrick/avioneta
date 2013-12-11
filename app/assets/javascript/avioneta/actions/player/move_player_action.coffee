@@ -5,7 +5,7 @@ define [
 ], (Actions, Base, MovePlayerCommand) ->
   class Actions.MovePlayerAction extends Base
     run : (arena) ->
-      arena.getPlayer(@options.player).move( axis : @options.axis, value : @options.value )
+      arena.getPlayer(@options.player).move( direction : @options.direction )
 
     command : ->
       new MovePlayerCommand @options

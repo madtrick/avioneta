@@ -14,6 +14,7 @@ define [
 ], (_, BaseModel, Player, DestroyModel,  BoundingCircle,  Cannon, Common, Painter, Sprite, Translation, Rotation, SpriteConfig ) ->
   class Player.BasicModel extends BaseModel
     radius: 16
+    speed : 1
 
     constructor : (options) ->
       super _.extend options,
@@ -24,7 +25,10 @@ define [
       @parts = { cannons :[new Cannon(coordinates : x: 14, y : 0)]}
 
     move : (args) ->
-      @coordinates[args.axis] = args.value
+      dx = @speed * Math.cos(-@rotation) * (if args.direction is "up" then 1 else -1)
+      dy = @speed * Math.sin(-@rotation) * (if args.direction is "up" then 1 else -1)
+      @coordinates.x += dx
+      @coordinates.y += dy
 
     hit : ->
       @life -= 10

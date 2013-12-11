@@ -46,13 +46,9 @@ define [
           actions.push new @rotatePlayerAction( player : player.id, rotation : degrees )
 
         if input.isDown 'DOWN'
-          actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) + 1)
+          actions.push new @movePlayerAction player : player.id, direction : "down"
         else if input.isDown 'UP'
-          actions.push new @movePlayerAction player : player.id, axis : "y", value : (@_yCoordinate(player) - 1)
-        else if input.isDown 'LEFT'
-          actions.push new @movePlayerAction player : player.id, axis : "x", value : (@_xCoordinate(player) - 1)
-        else if input.isDown 'RIGHT'
-          actions.push new @movePlayerAction player : player.id, axis : "x", value : (@_xCoordinate(player) + 1)
+          actions.push new @movePlayerAction player : player.id, direction : "up"
 
 
       if (input.isDown('SPACE') and (time - player.previousShot > player.shotTreshold or (player.previousShot is undefined))) 

@@ -4,5 +4,4 @@ define ['avioneta/orders'], (Orders) ->
 
     run : (arena) ->
       player = arena.getPlayer(@options.id)
-      player.move axis : "x", value : @options.x
-      player.move axis : "y", value : @options.y
+      player.move direction : @options.direction
