@@ -1,9 +1,9 @@
 define [
-  'views/modals',
+  'views/modals/modules',
   'views/modals/base',
   'mixins/modalizable',
-  'jst!templates/modals/player_destroyed'], (Modals, Base, Modalizable, template) ->
-  class Modals.PlayerDestroyedView extends Base
+  'jst!templates/modals/player_destroyed'], (Modules, Base, Modalizable, template) ->
+  class Modules.PlayerDestroyedView extends Base
     modalizable :
       header : "Player destroyed"
       buttons :
@@ -21,4 +21,4 @@ define [
       @rejectModal()
 
 
-  Modalizable.mixin Modals.PlayerDestroyedView
+  Modalizable.mixin Modules.PlayerDestroyedView

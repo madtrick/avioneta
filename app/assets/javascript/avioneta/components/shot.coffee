@@ -1,6 +1,7 @@
 define [
-  'avioneta/components'], (Components) ->
-  class Components.Shot
+  'avioneta/components/modules'
+], (Modules) ->
+  class Modules.Shot
 
     constructor : (attrs) ->
       @model  = attrs.model

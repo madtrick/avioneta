@@ -1,6 +1,6 @@
 define [
-  'avioneta/serializers',
-  'avioneta/orders/shoot_player_order'], (Serializers, ShootPlayerOrder) ->
-  class Serializers.ShootPlayerOrderSerializer
+  'avioneta/serializers/modules',
+  'avioneta/orders/shoot_player_order'], (Modules, ShootPlayerOrder) ->
+  class Modules.ShootPlayerOrderSerializer
     deserialize : (data) ->
       new ShootPlayerOrder(data)

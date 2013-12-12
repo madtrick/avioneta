@@ -1,7 +1,7 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/player/modules',
   'avioneta/actions/base',
-  ], (Action, Base) ->
-  class DestroyPlayerAction extends Base
+  ], (Modules, Base) ->
+  class Modules.DestroyPlayerAction extends Base
     run : (arena) ->
       arena.getPlayer(@options.player).destroy()

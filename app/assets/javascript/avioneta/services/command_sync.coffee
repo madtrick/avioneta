@@ -1,5 +1,5 @@
-define ['avioneta/services'], (Services) ->
-  class Services.CommandSync
+define ['avioneta/services/modules'], (Modules) ->
+  class Modules.CommandSync
     SERVER_URL = "ws://localhost:8080"
 
     @init : ->

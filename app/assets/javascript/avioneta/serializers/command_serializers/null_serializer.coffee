@@ -1,5 +1,8 @@
-define ['avioneta/serializers', 'avioneta/serializers/command_serializers/base'], (Serializers, Base) ->
-  class Serializers.NullSerializer extends Base
+define [
+  'avioneta/serializers/command_serializers/modules',
+  'avioneta/serializers/command_serializers/base'
+], (Modules, Base) ->
+  class Modules.NullSerializer extends Base
     serialize : -> undefined
     toJSON : -> undefined
 

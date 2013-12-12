@@ -1,5 +1,5 @@
-define ['avioneta/serializers', 'avioneta/collections/action_collection'], (Serializers, ActionCollection) ->
-  class Serializers.MessageCollectionSerializer
+define ['avioneta/serializers/modules', 'avioneta/collections/action_collection'], (Modules, ActionCollection) ->
+  class Modules.MessageCollectionSerializer
     deserialize : (json) ->
       collection = new ActionCollection()
       messages   = _.flatten(_.map(json, JSON.parse))

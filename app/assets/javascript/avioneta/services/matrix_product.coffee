@@ -1,5 +1,5 @@
-define ['underscore', 'avioneta/services'], (_, Services) ->
-  class Services.MatrixProduct
+define ['underscore', 'avioneta/services/modules'], (_, Modules) ->
+  class Modules.MatrixProduct
     constructor : (@matrix) ->
 
     byVector : (vector) ->

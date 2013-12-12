@@ -1,11 +1,11 @@
 define [
-  'avioneta/components/models/player/base_model'
-  'avioneta/components/models/player',
+  'avioneta/components/models/player/modules',
+  'avioneta/components/models/player/base_model',
   'avioneta/painters/painter',
   'avioneta/painters/types/rectangle',
   'avioneta/mixins/components/player/common'
-], (BaseModel, Player, Painter, Rectangle, Common) ->
-  class Player.DestroyModel extends BaseModel
+], (Modules, BaseModel, Painter, Rectangle, Common) ->
+  class Modules.DestroyModel extends BaseModel
     width : 100
     height: 5
 
@@ -23,4 +23,4 @@ define [
         width : @width
         height: @height
 
-  Common.mixin Player.DestroyModel
+  Common.mixin Modules.DestroyModel

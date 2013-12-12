@@ -1,5 +1,5 @@
-define ['interests'], (Interests) ->
-  class Interests.PlayerDestroyedInterests
+define ['interests/modules'], (Modules) ->
+  class Modules.PlayerDestroyedInterests
     constructor : (@view, bus) ->
       bus.on "player.destroyed", @_handlePlayerDestroyed
 

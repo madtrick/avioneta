@@ -1,5 +1,5 @@
-define ['avioneta/collections'], (Collections) ->
-  class Collections.ActionCollection
+define ['avioneta/collections/modules'], (Modules) ->
+  class Modules.ActionCollection
     constructor : (options) ->
       @_queue = []
       #@serializer = options.serializer

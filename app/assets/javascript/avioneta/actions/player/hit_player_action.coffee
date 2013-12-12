@@ -1,7 +1,7 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/player/modules',
   'avioneta/actions/base'
-  ], (Actions, Base) ->
-  class Actions.HitPlayerAction extends Base
+  ], (Modules, Base) ->
+  class Modules.HitPlayerAction extends Base
     run : (arena) ->
       arena.getPlayer(@options.player).hit()

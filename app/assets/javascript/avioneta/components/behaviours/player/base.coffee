@@ -1,7 +1,7 @@
 define [
-  'avioneta/components/behaviours',
-], (Behaviours) ->
-  class Behaviours.BasePlayerBehaviour
+  'avioneta/components/behaviours/player/modules',
+], (Modules) ->
+  class Modules.BasePlayerBehaviour
     constructor : ->
 
     update : (player, arena, time, services) ->

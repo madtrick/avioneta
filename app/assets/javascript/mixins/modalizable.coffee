@@ -1,5 +1,10 @@
-define ['underscore', 'mixins', 'views/modal', 'views/helpers/button'], (_, Mixins, Modal, Button) ->
-  Mixins.Modalizable = ->
+define [
+  'underscore',
+  'mixins/modules',
+  'views/modal',
+  'views/helpers/button'
+  ], (_, Modules, Modal, Button) ->
+  Modules.Modalizable = ->
     DEFAULT_OPTIONS =
       el : '.modal'
 
@@ -64,8 +69,8 @@ define ['underscore', 'mixins', 'views/modal', 'views/helpers/button'], (_, Mixi
 
 
 
-  Mixins.Modalizable.mixin = (mixed_in_object) ->
-    Mixins.Modalizable.call mixed_in_object.prototype
+  Modules.Modalizable.mixin = (mixed_in_object) ->
+    Modules.Modalizable.call mixed_in_object.prototype
     mixed_in_object
 
-  Mixins.Modalizable
+  Modules.Modalizable

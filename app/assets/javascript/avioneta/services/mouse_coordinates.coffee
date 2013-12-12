@@ -1,5 +1,5 @@
-define ['avioneta/services'], (Services) ->
-  class Services.MouseCoordinates
+define ['avioneta/services/modules'], (Modules) ->
+  class Modules.MouseCoordinates
     constructor : ->
       @coordinates = x : 0, y : 0
       $(document).on "mousemove", @_handleMousemove

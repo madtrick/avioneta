@@ -1,5 +1,5 @@
-define ['avioneta/services', 'avioneta/services/matrix_product'], (Services, MatrixProduct) ->
-  class Services.TranslationMatrixCalculator
+define ['avioneta/services/modules', 'avioneta/services/matrix_product'], (Modules, MatrixProduct) ->
+  class Modules.TranslationMatrixCalculator
     @calculate : (translationVector, vectorToTranslate) ->
       new MatrixProduct(@_buildMatrix(translationVector)).byVector(vectorToTranslate)
 

@@ -1,5 +1,5 @@
-define ['avioneta/serializers'], (Serializers) ->
-  class Serializers.CommandSerializer
+define ['avioneta/serializers/modules'], (Modules) ->
+  class Modules.CommandSerializer
     constructor : (@command) ->
     serialize : ->
       JSON.stringify @toJSON()

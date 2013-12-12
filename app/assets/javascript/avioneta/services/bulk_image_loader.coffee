@@ -1,9 +1,9 @@
 define [
   'underscore',
-  'avioneta/services',
+  'avioneta/services/modules',
   'avioneta/services/image_loader'
-], (_, Services, ImageLoader) ->
-  class Services.BulkImageLoader
+], (_, Modules, ImageLoader) ->
+  class Modules.BulkImageLoader
     constructor : (paths) ->
       @paths = paths
       @deferred =  $.Deferred()

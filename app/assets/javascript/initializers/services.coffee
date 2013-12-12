@@ -1,5 +1,4 @@
 define [
-  'initializers',
   'services/event_bus'
-  ], (Initializers, EventBus) ->
+  ], (EventBus) ->
     eventBus : EventBus

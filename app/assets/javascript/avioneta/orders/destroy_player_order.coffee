@@ -1,8 +1,8 @@
 define [
-  'avioneta/orders',
+  'avioneta/orders/modules',
   'event_bus'
-], (Orders, EventBus) ->
-  class Orders.DestroyPlayerOrder
+], (Modules, EventBus) ->
+  class Modules.DestroyPlayerOrder
     constructor : (@options) ->
 
     run : (arena) ->

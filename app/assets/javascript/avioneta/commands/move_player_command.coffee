@@ -1,8 +1,8 @@
 define [
   'underscore',
-  'avioneta/commands',
+  'avioneta/commands/modules',
   'avioneta/commands/base_command'
-], (_, Commands, BaseCommand) ->
-  class Commands.MovePlayerCommand extends BaseCommand
+], (_, Modules, BaseCommand) ->
+  class Modules.MovePlayerCommand extends BaseCommand
     constructor : (options) ->
       super _.extend {}, data : options, name : "MovePlayerCommand"

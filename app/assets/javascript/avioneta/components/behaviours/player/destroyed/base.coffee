@@ -1,8 +1,8 @@
 define [
-  'avioneta/components/behaviours',
+  'avioneta/components/behaviours/player/destroyed/modules',
   'avioneta/actions/null_action'
-], (Behaviours, NullAction) ->
-  class Behaviours.DestroyedPlayerBehaviours
+], (Modules, NullAction) ->
+  class Modules.DestroyedPlayerBehaviours
     constructor : ->
       @cycles = 0
     update : (player, arena, time) ->

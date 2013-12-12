@@ -1,10 +1,10 @@
 define [
   'underscore',
-  'avioneta/components',
+  'avioneta/components/modules',
   'avioneta/commands/destroy_player_command',
   'event_bus'
-], (_, Components, DestroyPlayerCommand, EventBus) ->
-  class Components.Arena
+], (_, Modules, DestroyPlayerCommand, EventBus) ->
+  class Modules.Arena
     constructor : (attrs) ->
       @width   = attrs.width
       @height  = attrs.height

@@ -1,5 +1,4 @@
 define [
-  'avioneta/initializers',
   'avioneta/services/command_sync',
   'avioneta/services/mouse_coordinates',
   'avioneta/services/canvas_mouse_coordinates',
@@ -7,7 +6,7 @@ define [
   'avioneta/services/angle_calculator',
   'avioneta/services/collision_detection',
   'avioneta/services/bulk_image_loader'
-  ], (Initializers, CommandSync, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator, CollisionDetection, BulkImageLoader) ->
+  ], (CommandSync, MouseCoordinates, CanvasMouseCoordinates, CanvasCoordinates, AngleCalculator, CollisionDetection, BulkImageLoader) ->
     CommandSync.init()
 
 

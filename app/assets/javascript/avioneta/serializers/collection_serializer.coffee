@@ -1,5 +1,5 @@
-define ['underscore', 'avioneta/serializers'], (_, Serializers) ->
-  class Serializers.CollectionSerializer
+define ['underscore', 'avioneta/serializers/modules'], (_, Modules) ->
+  class Modules.CollectionSerializer
     serialize : (collection)->
       values = _.reduce collection, ((memo, element) ->
         (memo or memo = []).push value if value = element.toJSON()

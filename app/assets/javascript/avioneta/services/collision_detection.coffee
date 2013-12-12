@@ -1,5 +1,5 @@
-define ['avioneta/services'], (Services) ->
-  class Services.CollisionDetection
+define ['avioneta/services/modules'], (Modules) ->
+  class Modules.CollisionDetection
     detect : (origin1, boundings1, origin2, boundings2) ->
       # Assume all boundings are circles
       distInX    = origin1.x - origin2.x

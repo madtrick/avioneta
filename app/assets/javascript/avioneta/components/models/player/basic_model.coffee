@@ -1,7 +1,7 @@
 define [
   'underscore',
-  'avioneta/components/models/player/base_model'
-  'avioneta/components/models/player',
+  'avioneta/components/models/player/modules',
+  'avioneta/components/models/player/base_model',
   'avioneta/components/models/player/destroy_model',
   'avioneta/components/utils/bounding_circle',
   'avioneta/components/parts/cannon',
@@ -11,8 +11,8 @@ define [
   'avioneta/painters/transformations/translation',
   'avioneta/painters/transformations/rotation',
   'avioneta/painters/utils/sprite_config'
-], (_, BaseModel, Player, DestroyModel,  BoundingCircle,  Cannon, Common, Painter, Sprite, Translation, Rotation, SpriteConfig ) ->
-  class Player.BasicModel extends BaseModel
+], (_, Modules, BaseModel, DestroyModel,  BoundingCircle,  Cannon, Common, Painter, Sprite, Translation, Rotation, SpriteConfig ) ->
+  class Modules.BasicModel extends BaseModel
     radius: 16
     speed : 1
 
@@ -61,4 +61,4 @@ define [
       ]
 
 
-  Common.mixin Player.BasicModel
+  Common.mixin Modules.BasicModel

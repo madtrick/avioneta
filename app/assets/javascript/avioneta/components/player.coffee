@@ -1,14 +1,14 @@
 define [
-  'avioneta/components',
+  'avioneta/components/modules',
   'avioneta/components/shot',
   'avioneta/serializers/player_serializer',
   'avioneta/commands/move_player_command'
   'avioneta/commands/shoot_player_command'
   'input',
   'event_bus'],
-  (Components, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
+  (Modules, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
 
-    class Components.Player
+    class Modules.Player
       shotTreshold : 500
       serializer   : PlayerSerializer
 

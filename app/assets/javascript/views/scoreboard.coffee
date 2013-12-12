@@ -1,5 +1,5 @@
-define ['views', 'backbone', 'views/scoreboard/item', 'jst!templates/scoreboard'], (Views, Backbone, Item, template) ->
-  class Views.Scoreboard extends Backbone.View
+define ['views/modules', 'backbone', 'views/scoreboard/item', 'jst!templates/scoreboard'], (Modules, Backbone, Item, template) ->
+  class Modules.Scoreboard extends Backbone.View
     initialize : ->
       @_items = []
 

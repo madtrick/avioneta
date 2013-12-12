@@ -1,8 +1,8 @@
 define [
-  'avioneta/components/behaviours/shot',
+  'avioneta/components/behaviours/modules',
   'avioneta/components/behaviours/shot/base',
-], (Shot, Base) ->
-  class Shot.Local extends Base
+], (Modules, Base) ->
+  class Modules.Local extends Base
 
 
 

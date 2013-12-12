@@ -1,5 +1,5 @@
-define ['avioneta/painters/types'], (Types) ->
-  class Types.Circle
+define ['avioneta/painters/types/modules'], (Modules) ->
+  class Modules.Circle
     paint : (config, canvas) ->
       canvas.beginPath()
       canvas.strokeStyle = config.color

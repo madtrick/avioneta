@@ -1,7 +1,7 @@
 define [
-  'avioneta/components/models'
-  ], (Models) ->
-  class Models.Base
+  'avioneta/components/models/modules'
+  ], (Modules) ->
+  class Modules.Base
     constructor : (options) ->
       @painter     = options.painter
       @boundings   = options.boundings

@@ -1,9 +1,9 @@
 define [
   'underscore',
+  'avioneta/components/models/player/modules',
   'avioneta/components/models/base'
-  'avioneta/components/models/player'
-], (_, Base, Player) ->
-  class Player.BaseModel extends Base
+], (_, Modules, Base) ->
+  class Modules.BaseModel extends Base
     constructor : (options) ->
       super options
       @life = options.life

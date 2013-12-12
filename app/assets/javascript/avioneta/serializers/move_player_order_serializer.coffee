@@ -1,7 +1,7 @@
 define [
-  'avioneta/serializers',
+  'avioneta/serializers/modules',
   'avioneta/orders/move_player_order'
-], (Serializers, MovePlayerOrder) ->
-  class Serializers.MovePlayerOrderSerializer
+], (Modules, MovePlayerOrder) ->
+  class Modules.MovePlayerOrderSerializer
     deserialize : (data) ->
       new MovePlayerOrder(data)

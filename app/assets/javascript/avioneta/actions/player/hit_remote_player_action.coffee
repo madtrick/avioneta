@@ -1,8 +1,8 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/player/modules',
   'avioneta/actions/player/hit_player_action',
   'avioneta/commands/null_command'
-  ], (Actions, HitPlayerAction, NullCommand) ->
-  class Actions.HitRemotePlayerAction extends HitPlayerAction
+  ], (Modules, HitPlayerAction, NullCommand) ->
+  class Modules.HitRemotePlayerAction extends HitPlayerAction
     command : ->
       new NullCommand()

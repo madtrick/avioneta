@@ -1,11 +1,11 @@
 define [
-  'avioneta/orders',
+  'avioneta/orders/modules',
   'avioneta/components/player',
   'avioneta/components/models/player/basic_model',
   'avioneta/components/behaviours/player/remote',
   'avioneta/components/behaviours/player/local'
-], (Orders, Player, BasicModel, RemotePlayerBehaviour, LocalPlayerBehaviour) ->
-  class Orders.RegisterPlayerOrder
+], (Modules, Player, BasicModel, RemotePlayerBehaviour, LocalPlayerBehaviour) ->
+  class Modules.RegisterPlayerOrder
     constructor : (@options) ->
 
     run : (arena) ->

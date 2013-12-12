@@ -1,10 +1,10 @@
 define [
-  'avioneta',
+  'avioneta/modules',
   'avioneta/painters/painter',
   'avioneta/painters/types/sprite',
   'avioneta/painters/utils/sprite_config'
-], (Avioneta, Painter, Sprite, SpriteConfig) ->
-  class Avioneta.Background
+], (Modules, Painter, Sprite, SpriteConfig) ->
+  class Modules.Background
     constructor : ->
       @painter = new Painter(type : new Sprinte())
 

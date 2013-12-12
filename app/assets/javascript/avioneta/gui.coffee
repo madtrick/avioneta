@@ -1,10 +1,10 @@
 define [
-  'avioneta',
+  'avioneta/modules',
   'avioneta/painters/painter',
   'avioneta/painters/types/sprite',
   'avioneta/painters/utils/sprite_config'
-], (Avioneta, Painter, Sprite, SpriteConfig) ->
-    class Avioneta.GUI
+], (Modules, Painter, Sprite, SpriteConfig) ->
+    class Modules.GUI
       #
       # This game loop is strongly based
       # on the ideas found at:

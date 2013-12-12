@@ -1,5 +1,5 @@
-define ['avioneta/services', 'avioneta/services/matrix_product'], (Services, MatrixProduct) ->
-  class Services.RotationMatrixCalculator
+define ['avioneta/services/modules', 'avioneta/services/matrix_product'], (Modules, MatrixProduct) ->
+  class Modules.RotationMatrixCalculator
     @calculate : (rotation, vectorToRotate) ->
       new MatrixProduct(@_buildMatrix(rotation)).byVector(vectorToRotate)
 

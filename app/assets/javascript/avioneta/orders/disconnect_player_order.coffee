@@ -1,8 +1,8 @@
 define [
-  'avioneta/orders',
+  'avioneta/orders/modules',
   'avioneta/components/player'
-], (Orders, Player) ->
-  class Orders.DisconnectPlayerOrder
+], (Modules, Player) ->
+  class Modules.DisconnectPlayerOrder
     constructor : (@options) ->
 
     run : (arena) ->

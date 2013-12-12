@@ -1,11 +1,11 @@
 define [
-  'avioneta',
+  'avioneta/modules',
   'frundis',
   'bootbox',
   'views/modal',
   'views/model'
-], (Avioneta, Frundis, bootbox, Modal, Model) ->
-  class Avioneta.Configurator
+], (Modules, Frundis, bootbox, Modal, Model) ->
+  class Modules.Configurator
     constructor : (mainDeferred)->
       @mainDeferred = mainDeferred
       @machine = new Frundis.Machine "init" : {success : "done", failure : "error"}

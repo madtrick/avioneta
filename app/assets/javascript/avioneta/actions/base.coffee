@@ -1,4 +1,4 @@
-define ['avioneta/actions'], (Actions) ->
-  class Base
+define ['avioneta/actions/modules'], (Modules) ->
+  class Modules.Base
     constructor : (args) ->
       @options = args

@@ -1,9 +1,9 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/player/modules',
   'avioneta/actions/base',
   'avioneta/commands/null_command'
-  ], (Actions, Base, NullCommand) ->
-  class Actions.PlacePlayerAction extends Base
+  ], (Modules, Base, NullCommand) ->
+  class Modules.PlacePlayerAction extends Base
     run : (arena) ->
       arena.getPlayer(@options.player).place(@options.placement)
 

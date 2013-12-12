@@ -1,11 +1,11 @@
 define [
-  'avioneta/orders',
+  'avioneta/orders/modules',
   'avioneta/components/shot',
   'avioneta/components/models/shot/basic_model',
   'avioneta/services/translation_matrix_calculator',
   'avioneta/services/rotation_matrix_calculator'
-], (Orders, Shot, BasicModel, TranslationMatrixCalculator, RotationMatrixCalculator) ->
-  class Orders.ShootPlayerOrder
+], (Modules, Shot, BasicModel, TranslationMatrixCalculator, RotationMatrixCalculator) ->
+  class Modules.ShootPlayerOrder
     constructor : (@options) ->
 
     run : (arena) ->

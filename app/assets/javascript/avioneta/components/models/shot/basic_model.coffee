@@ -1,14 +1,14 @@
 define [
   'underscore'
-  'avioneta/components/models/base'
-  'avioneta/components/models/shot',
+  'avioneta/components/models/shot/modules',
+  'avioneta/components/models/base',
   'avioneta/painters/painter',
   'avioneta/painters/types/circle',
   'avioneta/components/behaviours/shot/local',
   'avioneta/components/behaviours/shot/remote',
   'avioneta/components/utils/bounding_circle'
-], (_, Base, Shot, Painter, Circle, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
-  class Shot.BasicModel extends Base
+], (_, Modules, Base, Painter, Circle, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
+  class Modules.BasicModel extends Base
     width  : 3
     height : 3
     radius : 3

@@ -1,7 +1,7 @@
 define [
-  'avioneta/commands',
+  'avioneta/commands/modules',
   'avioneta/commands/base_command',
-  'avioneta/serializers/command_serializers/null_serializer'], (Commands, BaseCommand, NullSerializer) ->
-  class Commands.NullCommand extends BaseCommand
+  'avioneta/serializers/command_serializers/null_serializer'], (Modules, BaseCommand, NullSerializer) ->
+  class Modules.NullCommand extends BaseCommand
     serializer : NullSerializer
     run : ->

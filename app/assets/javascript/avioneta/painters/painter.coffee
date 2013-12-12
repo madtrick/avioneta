@@ -1,5 +1,5 @@
-define ['underscore', 'avioneta/painters'], (_, Painters) ->
-  class Painters.Painter
+define ['underscore', 'avioneta/painters/modules'], (_, Modules) ->
+  class Modules.Painter
     constructor : (options) ->
       @type            = options.type
       @transformations = options.transformations

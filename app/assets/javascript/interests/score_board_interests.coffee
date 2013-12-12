@@ -1,5 +1,5 @@
-define ['interests'], (Interests) ->
-  class Interests.ScoreBoardInterests
+define ['interests/modules'], (Modules) ->
+  class Modules.ScoreBoardInterests
     constructor : (@sc, bus) ->
       bus.on "scoreboard.update", @_handleItemUpdateEvent
       bus.on "scoreboard.create", @_handleItemCreateEvent

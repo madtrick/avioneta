@@ -1,5 +1,5 @@
-define ['avioneta/commands', 'avioneta/serializers/command_serializer'], (Commands, CommandSerializer) ->
-  class Commands.BaseCommand
+define ['avioneta/commands/modules', 'avioneta/serializers/command_serializer'], (Modules, CommandSerializer) ->
+  class Modules.BaseCommand
     serializer : CommandSerializer
 
     constructor : (@options) ->

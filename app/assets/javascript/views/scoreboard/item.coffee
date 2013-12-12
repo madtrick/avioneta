@@ -1,5 +1,5 @@
-define ['views', 'backbone', 'jst!templates/scoreboard/item'], (Scoreboard, Backbone, template) ->
-  class Scoreboard.Item extends Backbone.View
+define ['views/scoreboard/modules', 'backbone', 'jst!templates/scoreboard/item'], (Modules, Backbone, template) ->
+  class Modules.Item extends Backbone.View
     LIFE_PROGRESS_BAR_CLASS   = "progress-bar-success"
     DAMAGE_PROGRESS_BAR_CLASS = "progress-bar-danger"
 

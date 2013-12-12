@@ -1,5 +1,5 @@
-define ['avioneta/services'], (Services) ->
-  class Services.CanvasCoordinates
+define ['avioneta/services/modules'], (Modules) ->
+  class Modules.CanvasCoordinates
     constructor : (@options) ->
 
     coordinates : ->

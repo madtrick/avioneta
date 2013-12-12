@@ -1,10 +1,10 @@
 define [
-  'avioneta/components/behaviours/shot',
+  'avioneta/components/behaviours/modules',
   'avioneta/actions/shot/move_shot_action',
   'avioneta/actions/shot/remove_shot_action',
   'avioneta/actions/shot/shot_hit_action'
-  ], (Shot, MoveShotAction, RemoveShotAction, ShotHitAction) ->
-  class Shot.Base
+  ], (Modules, MoveShotAction, RemoveShotAction, ShotHitAction) ->
+  class Modules.Base
     update : (shot, arena, date, services) ->
       if @_shotIsOutOfArena(shot, arena)
         return new RemoveShotAction( shot : shot.id )

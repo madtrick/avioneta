@@ -1,8 +1,8 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/player/modules',
   'avioneta/actions/player/destroy_player_action',
   'avioneta/commands/destroy_player_command'
-  ], (Actions, DestroyPlayerAction, DestroyPlayerCommand) ->
-  class Actions.DestroyLocalPlayerAction extends DestroyPlayerAction
+  ], (Modules, DestroyPlayerAction, DestroyPlayerCommand) ->
+  class Modules.DestroyLocalPlayerAction extends DestroyPlayerAction
     command : ->
       new DestroyPlayerCommand @options

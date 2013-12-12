@@ -1,10 +1,10 @@
 define [
-  'avioneta',
+  'avioneta/modules',
   'avioneta/collections/action_collection',
   'avioneta/serializers/collection_serializer',
   'avioneta/serializers/message_collection_serializer'
-], (Avioneta, ActionCollection, CollectionSerializer, MessageCollectionSerializer) ->
-  class Avioneta.Game
+], (Modules, ActionCollection, CollectionSerializer, MessageCollectionSerializer) ->
+  class Modules.Game
     actions                     : new ActionCollection()
     collectionSerializer        : new CollectionSerializer()
     messageCollectionSerializer : new MessageCollectionSerializer()

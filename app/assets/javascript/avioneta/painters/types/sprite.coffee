@@ -1,5 +1,5 @@
-define ['avioneta/painters/types'], (Types) ->
-  class Types.Sprite
+define ['avioneta/painters/types/modules'], (Modules) ->
+  class Modules.Sprite
     paint : (config, canvas) ->
       canvas.drawImage(
         config.sprite(),

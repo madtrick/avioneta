@@ -1,5 +1,5 @@
-define ['backbone', 'views', 'jst!templates/modal'], (Backbone, Views, template) ->
-  class Views.Modal extends Backbone.View
+define ['backbone', 'views/modules', 'jst!templates/modal'], (Backbone, Modules, template) ->
+  class Modules.Modal extends Backbone.View
     template : template
 
     modalize : (view) ->

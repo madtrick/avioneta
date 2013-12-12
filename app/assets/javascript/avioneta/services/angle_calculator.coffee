@@ -1,5 +1,5 @@
-define ['avioneta/services'], (Services) ->
-  class Services.AngleCalculator
+define ['avioneta/services/modules'], (Modules) ->
+  class Modules.AngleCalculator
     angle : (origin, destination) ->
       if origin.y is destination.y and origin.x is destination.y
         return 0

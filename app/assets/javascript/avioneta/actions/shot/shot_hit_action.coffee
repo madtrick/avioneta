@@ -1,9 +1,9 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/shot/modules',
   'avioneta/actions/base',
   'avioneta/commands/null_command'
-  ], (Actions, Base, NullCommand) ->
-  class Actions.ShotHitActions extends Base
+  ], (Modules, Base, NullCommand) ->
+  class Modules.ShotHitActions extends Base
     run : (arena) ->
       arena.getShot(@options.shot).hit()
 

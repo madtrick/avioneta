@@ -1,5 +1,5 @@
-define ['avioneta/orders'], (Orders) ->
-  class Orders.RotatePlayerOrder
+define ['avioneta/orders/modules'], (Modules) ->
+  class Modules.RotatePlayerOrder
     constructor : (@options) ->
 
     run : (arena) ->

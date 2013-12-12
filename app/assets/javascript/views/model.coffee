@@ -1,5 +1,5 @@
-define ['views', 'backbone', 'mixins/modalizable', 'jst!templates/model'], (Views, Backbone, Modalizable, template) ->
-  class Views.Model extends Backbone.View
+define ['views/modules', 'backbone', 'mixins/modalizable', 'jst!templates/model'], (Modules, Backbone, Modalizable, template) ->
+  class Modules.Model extends Backbone.View
     template : template
 
     modalizable :
@@ -17,4 +17,4 @@ define ['views', 'backbone', 'mixins/modalizable', 'jst!templates/model'], (View
     _handleOk : => 
       @resolveModal()
 
-  Modalizable.mixin Views.Model
+  Modalizable.mixin Modules.Model

@@ -1,7 +1,7 @@
 define [
-  'avioneta/serializers',
+  'avioneta/serializers/modules',
   'avioneta/orders/disconnect_player_order'
-], (Serializers, DisconnectPlayerOrder) ->
-  class Serializers.DisconnectPlayerOrderSerializer
+], (Modules, DisconnectPlayerOrder) ->
+  class Modules.DisconnectPlayerOrderSerializer
     deserialize : (data) ->
       new DisconnectPlayerOrder(data)

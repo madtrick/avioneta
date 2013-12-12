@@ -1,5 +1,5 @@
-define ['avioneta/services'], (Services) ->
-  class Services.ImageLoader
+define ['avioneta/services/modules'], (Modules) ->
+  class Modules.ImageLoader
     constructor : (path) ->
       @path = path
       @deferred = $.Deferred()

@@ -1,9 +1,9 @@
 define [
-  'avioneta/actions',
+  'avioneta/actions/player/modules',
   'avioneta/actions/base',
   'avioneta/commands/rotate_player_command'
-], (Actions, Base, RotatePlayerCommand) ->
-    class Actions.RotatePlayerAction extends Base
+], (Modules, Base, RotatePlayerCommand) ->
+    class Modules.RotatePlayerAction extends Base
       run : (arena) ->
         arena.getPlayer(@options.player).rotate( rotation : @options.rotation )
 

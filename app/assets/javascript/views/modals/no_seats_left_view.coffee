@@ -1,11 +1,11 @@
 define [
-  'views/modals',
+  'views/modals/modules',
   'views/modals/base',
   'mixins/modalizable',
   'jst!templates/modals/no_seats_left'
-], (Modals, Base, Modalizable, template) ->
+], (Modules, Base, Modalizable, template) ->
 
-  class Modals.NoSeatsLeftView extends Base
+  class Modules.NoSeatsLeftView extends Base
     modalizable :
       header : "No seats left on this game"
       buttons :
@@ -22,5 +22,4 @@ define [
     _handleCancel : ->
       @rejectModal()
 
-  Modalizable.mixin Modals.NoSeatsLeftView
-
+  Modalizable.mixin Modules.NoSeatsLeftView

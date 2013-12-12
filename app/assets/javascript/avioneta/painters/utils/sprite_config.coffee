@@ -1,5 +1,5 @@
-define ['avioneta/components/utils'], (Utils) ->
-  class Utils.SpriteArenaConfig
+define ['avioneta/components/utils/modules'], (Modules) ->
+  class Modules.SpriteConfig
     constructor : (@options) ->
     image : ->
       @options.image
