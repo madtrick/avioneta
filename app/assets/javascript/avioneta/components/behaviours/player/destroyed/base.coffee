@@ -1,15 +1,12 @@
 define [
   'avioneta/components/behaviours/player/destroyed/modules',
+  'avioneta/actions/player/remove_player_action',
   'avioneta/actions/null_action'
-], (Modules, NullAction) ->
+], (Modules, RemovePlayerAction, NullAction) ->
   class Modules.DestroyedPlayerBehaviours
-    constructor : ->
-      @cycles = 0
     update : (player, arena, time) ->
-      if @cycles is 10
-        arena.removePlayer player
+      if player.isDestroyed()
         @playerDestroyed(player, arena, time)
-
-      @cycles +=1
+        return new RemovePlayerAction(player : player.id)
 
       new NullAction()

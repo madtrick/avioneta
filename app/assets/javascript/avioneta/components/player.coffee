@@ -36,6 +36,9 @@ define [
       isAlive : ->
         @model.isAlive()
 
+      isDestroyed : ->
+        @model.isDestroyed()
+
       life : ->
         @model.life
 

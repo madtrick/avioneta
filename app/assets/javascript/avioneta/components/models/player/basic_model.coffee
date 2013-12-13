@@ -20,7 +20,6 @@ define [
       super _.extend options,
         rotation  : 0
         boundings : new BoundingCircle( radius : @radius )
-        painter   : new Painter(type : new Sprite(), transformations : @painterTransformations())
 
       @parts = { cannons :[new Cannon(coordinates : x: 14, y : 0)]}
 
@@ -38,27 +37,5 @@ define [
         coordinates : @coordinates
         behaviour : @behaviour.destroy()
         boundings : @boundings
-
-    painterConfig : ->
-      @_painterConfig or @_painterConfig = new SpriteConfig
-        sprite : $("[data-behaviour~=image-resource]")[0]
-        coordinates :
-          sprite : x : 404, y :2
-          canvas : x : -24, y : -24
-        width : 48
-        height: 48
-
-    paintOptions : ->
-      transformations :
-        translation : x : @coordinates.x, y : @coordinates.y
-        rotation : -@rotation #negated because of the inverted axis in canvas
-      type : @painterConfig()
-
-    painterTransformations : ->
-      [
-        new Translation(),
-        new Rotation()
-      ]
-
 
   Common.mixin Modules.BasicModel

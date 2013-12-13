@@ -7,6 +7,7 @@ define ['underscore', 'avioneta/painters/modules'], (_, Modules) ->
     paint : (config, canvas) ->
       canvas.save()
       _.invoke(@transformations, "transform", config.transformations, canvas)
+      canvas.globalAlpha = config.alpha if config.alpha
       @type.paint(config.type, canvas)
       canvas.restore()
 
