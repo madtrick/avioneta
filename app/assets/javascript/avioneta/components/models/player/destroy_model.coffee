@@ -23,7 +23,7 @@ define [
       @animationCycles -= 1
 
     update : (player, arena, time, services) ->
-      @destroyed = true if @animationCycles is 0
+      @destroyed = true if @animationCycles < 0
       super(player, arena, time, services)
 
     paintOptions : ->
