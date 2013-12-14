@@ -45,9 +45,9 @@ define [
           degrees = services.angleCalculator.angle(player.coordinates(), @mouseCoords)
           actions.push new @rotatePlayerAction( player : player.id, rotation : degrees )
 
-        if input.isDown 'DOWN'
+        if input.isDown 'S'
           actions.push new @movePlayerAction player : player.id, direction : "down"
-        else if input.isDown 'UP'
+        else if input.isDown 'W'
           actions.push new @movePlayerAction player : player.id, direction : "up"
 
 
