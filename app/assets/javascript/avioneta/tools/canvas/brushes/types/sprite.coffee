@@ -1,4 +1,4 @@
-define ['avioneta/painters/types/modules'], (Modules) ->
+define ['avioneta/tools/canvas/brushes/types/modules'], (Modules) ->
   class Modules.Sprite
     paint : (config, canvas) ->
       canvas.drawImage(

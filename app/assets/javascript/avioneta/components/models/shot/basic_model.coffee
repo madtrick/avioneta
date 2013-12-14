@@ -2,12 +2,10 @@ define [
   'underscore'
   'avioneta/components/models/shot/modules',
   'avioneta/components/models/base',
-  'avioneta/painters/painter',
-  'avioneta/painters/types/circle',
   'avioneta/components/behaviours/shot/local',
-  'avioneta/components/behaviours/shot/remote',
-  'avioneta/components/utils/bounding_circle'
-], (_, Modules, Base, Painter, Circle, LocalBehaviour, RemoteBehaviour, BoundingCircle) ->
+  'avioneta/components/utils/bounding_circle',
+  'avioneta/painters/shot/circular'
+], (_, Modules, Base, Local, BoundingCircle, Circular) ->
   class Modules.BasicModel extends Base
     width  : 3
     height : 3
@@ -17,9 +15,9 @@ define [
 
     constructor : (options) ->
       super _.extend options,
-        painter   : new Painter( type : new Circle() )
+        painter : new Circular()
         boundings : new BoundingCircle(radius : @radius)
-        behaviour : new LocalBehaviour()
+        behaviour : new Local()
 
     move : ->
       # I have to negate the angle because of the flipped coordinate
@@ -31,9 +29,3 @@ define [
 
     hit : (shot) ->
       shot.active = false
-
-    paintOptions : ->
-      type :
-        coordinates : @coordinates
-        radius      : @radius
-        color       : "red"

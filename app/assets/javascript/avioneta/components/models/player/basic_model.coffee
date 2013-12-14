@@ -6,18 +6,15 @@ define [
   'avioneta/components/utils/bounding_circle',
   'avioneta/components/parts/cannon',
   'avioneta/mixins/components/player/common',
-  'avioneta/painters/painter',
-  'avioneta/painters/types/sprite',
-  'avioneta/painters/transformations/translation',
-  'avioneta/painters/transformations/rotation',
-  'avioneta/painters/utils/sprite_config'
-], (_, Modules, BaseModel, DestroyModel,  BoundingCircle,  Cannon, Common, Painter, Sprite, Translation, Rotation, SpriteConfig ) ->
+  'avioneta/painters/player/alive'
+], (_, Modules, BaseModel, DestroyModel,  BoundingCircle,  Cannon, Common, Alive) ->
   class Modules.BasicModel extends BaseModel
     radius: 16
     speed : 1
 
-    constructor : (options) ->
-      super _.extend options,
+    constructor : (@options) ->
+      super _.extend @options,
+        painter : new Alive(marker : @options.marker)
         rotation  : 0
         boundings : new BoundingCircle( radius : @radius )
 
@@ -37,5 +34,6 @@ define [
         coordinates : @coordinates
         behaviour : @behaviour.destroy()
         boundings : @boundings
+        marker : @options.marker
 
   Common.mixin Modules.BasicModel

@@ -1,4 +1,4 @@
-define ['avioneta/components/utils/modules'], (Modules) ->
+define ['avioneta/tools/canvas/utils/modules'], (Modules) ->
   class Modules.SpriteConfig
     constructor : (@options) ->
     image : ->
