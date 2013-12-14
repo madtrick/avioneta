@@ -10,7 +10,7 @@ define [
 ], (_, Modules, BaseModel, DestroyModel,  BoundingCircle,  Cannon, Common, Alive) ->
   class Modules.BasicModel extends BaseModel
     radius: 16
-    speed : 1
+    speed : 2
 
     constructor : (@options) ->
       super _.extend @options,
