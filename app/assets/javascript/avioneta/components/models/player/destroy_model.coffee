@@ -9,8 +9,6 @@ define [
     width : 100
     height: 5
 
-    animationCycles : 50
-
     constructor : (options) ->
       super _.extend options,
         painter : new Destroy(marker : options.marker, cb : @_handlePainterFinish)
