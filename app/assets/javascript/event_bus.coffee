@@ -1,4 +1,4 @@
-define ['avioneta', 'microevent'], (Avioneta, MicroEvent) ->
+define ['microevent'], (MicroEvent) ->
   bus = {}
   MicroEvent.mixin bus
   bus.on = bus.bind # Handy alias

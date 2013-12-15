@@ -3,12 +3,13 @@
 # object which makes them inaccesible from RequireJS
 #
 # Load them and fake a module
-get = (path, cb) ->
-  $.ajax path,
-    success : (data, args...) ->
-      cb(data)
+define ['jquery'], ($) ->
+  get = (path, cb) ->
+    $.ajax path,
+      success : (data, args...) ->
+        cb(data)
 
-define
+  pluginBuilder : "./builders/jst"
   load : (name, req, onload, config) ->
     get "#{config.baseUrl}#{name}.js", (data) ->
       onload.fromText "define(function(){return #{data}})"

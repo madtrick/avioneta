@@ -1,4 +1,9 @@
-define ['views/modals/modules', 'backbone', 'jst!templates/modals/base'], (Modules, Backbone, template) ->
+define [
+  'jquery',
+  'views/modals/modules',
+  'backbone',
+  'jst!templates/modals/base'
+], ($, Modules, Backbone, template) ->
   class Modules.Base extends Backbone.View
     template : template
 

@@ -4,3 +4,5 @@ spec/javascripts/*
 !spec/javascripts/support/
 public/assets/*
 !public/assets/require.js
+node_modules/
+build/
