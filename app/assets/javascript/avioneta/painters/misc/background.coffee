@@ -17,7 +17,7 @@ define [
           new SpriteConfig
             sprite : $("[data-behaviour~=image-resource]")[0]
             coordinates :
-              sprite : x : 2 , y : 2
+              sprite : x : 0 , y : 0
               canvas : x : 0 , y : 0
-            width : 400
+            width : 800
             height: 400

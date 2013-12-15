@@ -19,7 +19,7 @@ define [
         new BulkImageLoader(["images/avioneta/sprite.png"]).load()
           .done  (image) ->
             commands = []
-            arena    = new Arena(width : 400, height : 400)
+            arena    = new Arena(width : 800, height : 400)
             command  = new RegisterPlayerCommand()
 
             commands.push command
