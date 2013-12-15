@@ -1,3 +1,16 @@
+.logo {
+  font-size : 50px;
+  margin : 5px 0 0 20px;
+  color : #444444;
+
+  .plane-as-t {
+    margin : 10px 6px 10px 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45);
+  }
+
+}
+
 .main {
   padding : 30px;
 }
