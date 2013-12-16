@@ -4,9 +4,8 @@ define [
   'avioneta/serializers/player_serializer',
   'avioneta/commands/move_player_command'
   'avioneta/commands/shoot_player_command'
-  'input',
   'event_bus'],
-  (Modules, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, input, EventBus) ->
+  (Modules, Shot, PlayerSerializer, MovePlayerCommand, ShootPlayerCommand, EventBus) ->
 
     class Modules.Player
       shotTreshold : 500

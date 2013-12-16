@@ -16,7 +16,7 @@ define [
     class Modules.Setup
       @init : (options) ->
 
-        new BulkImageLoader(["images/avioneta/sprite.png"]).load()
+        new BulkImageLoader(["assets/images/avioneta/sprite.png"]).load()
           .done  (image) ->
             commands = []
             arena    = new Arena(width : 800, height : 400)

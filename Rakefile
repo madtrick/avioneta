@@ -8,19 +8,61 @@ rescue LoadError
   end
 end
 
-task :build do
-  require "guard"
+namespace :assets do
+  #
+  # This variables have to be defined as constants to
+  # be available to the helpers methods below.
+  #
+  # If defined as local variables they will only be
+  # available to the blocks (which closures over them)
+  #
+  PUBLIC_ASSETS_DIR = "public/assets"
+  BUILD_ASSETS_DIR  = "build/assets"
+  VENDOR_ASSETS_DIR = "vendor/assets"
 
-  Guard.setup group: [:assets]
-  Guard.run_all
+  SUBDIRS = %w{javascripts stylesheets}
 
-  copy_to "vendor/assets/bootstrap-3.0.0/bootstrap.js", "public/assets/vendor/bootstrap-3.0.0/bootstrap.js"
-  copy_to "vendor/assets/bootstrap-3.0.0/bootstrap.css", "public/assets/vendor/bootstrap-3.0.0/bootstrap.css"
-  copy_to "vendor/assets/jquery-2.0.3.js", "public/assets/vendor/jquery-2.0.3.js"
-  copy_to "vendor/assets/bootbox.js", "public/assets/vendor/bootbox.js"
-  copy_to "vendor/assets/underscore-1.5.2.js", "public/assets/vendor/underscore-1.5.2.js"
-  copy_to "vendor/assets/backbone-1.1.0.js", "public/assets/vendor/backbone-1.1.0.js"
-  copy_to "vendor/assets/microevent.js", "public/assets/vendor/microevent.js"
+  desc "Optimizes javascripts (minimize and uglify) and copies other assets into build dir"
+  task :build => :prepare do
+    FileUtils.rm_rf(files_in_dir(BUILD_ASSETS_DIR))
+    sh "./node_modules/requirejs/bin/r.js -o build.js"
+
+    FileUtils.cp(File.join("public", "index.html"), "build")
+    FileUtils.cp_r(File.join(PUBLIC_ASSETS_DIR, "stylesheets"), BUILD_ASSETS_DIR)
+    FileUtils.cp_r(File.join(PUBLIC_ASSETS_DIR, "images"), BUILD_ASSETS_DIR)
+  end
+
+  desc "Removes javascripts and stylesheets dirs from public"
+  task :clean do
+    SUBDIRS.each {|subdir| FileUtils.rm_rf(Dir.glob(File.join(PUBLIC_ASSETS_DIR, subdir)))}
+  end
+
+  desc "Compiles coffeescripts, sass and eco files and copies vendored resources into public"
+  task :prepare => :clean do
+    compile_assets
+    copy_vendored_assets
+  end
+
+  def compile_assets
+    require "guard"
+
+    Guard.setup group: [:assets]
+    Guard.run_all
+  end
+
+  def copy_vendored_assets
+    SUBDIRS.each do |subdir|
+      files_in_dir(File.join(VENDOR_ASSETS_DIR, subdir)).each {|file| copy_to(file,  vendor_file_path_in_public(subdir, file))}
+    end
+  end
+
+  def files_in_dir(dir)
+    Dir.glob(File.join(dir, "*"))
+  end
+
+  def vendor_file_path_in_public(subdir, vendor_file)
+    File.join(PUBLIC_ASSETS_DIR, subdir, "vendor", File.basename(vendor_file))
+  end
 end
 
 def ensure_path(path)

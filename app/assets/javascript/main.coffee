@@ -18,11 +18,12 @@ requirejs.config
   paths :
     jquery    : 'vendor/jquery-2.0.3'
     bootbox   : 'vendor/bootbox'
-    bootstrap : 'vendor/bootstrap-3.0.0/bootstrap'
+    bootstrap : 'vendor/bootstrap-3.0.0'
     backbone  : 'vendor/backbone-1.1.0'
     underscore: 'vendor/underscore-1.5.2'
     frundis   : 'vendor/frundis'
     microevent   : 'vendor/microevent'
+    input   : 'vendor/input'
   callback : ->
     $().ready ->
       window.JST = {} # Required or JST will crash (ñapa)

@@ -1,8 +1,8 @@
 ({
-  baseUrl        : "public/assets/",
-  mainConfigFile : "public/assets/main.js",
-  name           : "almond",
+  baseUrl        : "public/assets/javascripts/",
+  mainConfigFile : "public/assets/javascripts/main.js",
+  name           : "vendor/almond",
   include        : "main",
-  out            : "build/assets/avioneta.js",
+  out            : "build/assets/javascripts/avioneta.js",
   optimize       : "uglify2"
 })

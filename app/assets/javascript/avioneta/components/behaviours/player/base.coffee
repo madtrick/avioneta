@@ -1,6 +1,7 @@
 define [
   'avioneta/components/behaviours/player/modules',
-], (Modules) ->
+  'input'
+], (Modules, input) ->
   class Modules.BasePlayerBehaviour
     constructor : ->
 
