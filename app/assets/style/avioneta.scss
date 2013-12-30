@@ -44,11 +44,14 @@ body {
   }
 }
 
+.gui {
+  float :left;
+}
+
 .canvases {
   position : relative;
   width : 800px;
   height: 400px;
-  float : left;
 }
 
 canvas {
@@ -62,6 +65,16 @@ canvas {
     z-index : -10;
   }
 
+}
+
+.controls {
+  font-size : 17px;
+  margin-top : 10px;
+  text-align : center;
+
+  .key {
+    font-weight : bold;
+  }
 }
 
 img[data-behaviour~=image-resource] {
