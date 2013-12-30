@@ -1,7 +1,14 @@
+body {
+  background-color : #333333;
+}
+
+.container {
+  margin : 5px 0 0 30px;
+}
+
 .logo {
   font-size : 50px;
-  margin : 5px 0 0 30px;
-  color : #444444;
+  color : #ddd;
 
   .plane-as-t {
     margin : 10px 6px 10px 6px;
@@ -37,7 +44,6 @@
 }
 
 .canvases {
-  margin : 10px 0 0 30px;
   position : relative;
   width : 800px;
   height: 400px;
