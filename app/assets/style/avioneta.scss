@@ -1,5 +1,6 @@
 body {
   background-color : #333333;
+  color: #ddd;
 }
 
 .container {
@@ -8,7 +9,6 @@ body {
 
 .logo {
   font-size : 50px;
-  color : #ddd;
 
   .plane-as-t {
     margin : 10px 6px 10px 6px;
@@ -30,6 +30,7 @@ body {
     font-size : 18px;
     padding : 5px 10px 0 10px;
     margin-bottom: 4px;
+    color : #222;
 
     &.local {
       order : 1;
