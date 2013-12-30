@@ -1,5 +1,6 @@
 define [
   'jquery',
+  'configuration',
   'avioneta/modules',
   'avioneta/gui',
   'avioneta/components/arena',
@@ -12,14 +13,14 @@ define [
   'extensions/string',
   'avioneta/services/bulk_image_loader'
 ],
-  ($, Modules, GUI, Arena, Player, CollectionSerializer, BasicModel, Configurator,  RegisterPlayerCommand, Game, String, BulkImageLoader) ->
+  ($, Configuration, Modules, GUI, Arena, Player, CollectionSerializer, BasicModel, Configurator,  RegisterPlayerCommand, Game, String, BulkImageLoader) ->
     class Modules.Setup
       @init : (options) ->
 
         new BulkImageLoader(["assets/images/avioneta/sprite.png"]).load()
           .done  (image) ->
             commands = []
-            arena    = new Arena(width : 800, height : 400)
+            arena    = new Arena(width : Configuration.avioneta.arena.width, height : Configuration.avioneta.arena.height)
             command  = new RegisterPlayerCommand()
 
             commands.push command

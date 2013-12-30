@@ -24,6 +24,9 @@ requirejs.config
     frundis   : 'vendor/frundis'
     microevent   : 'vendor/microevent'
     input   : 'vendor/input'
+    # Force configuration to be in development 'mode'
+    # This is overriden in the build.js file
+    configuration : 'config/development'
   callback : ->
     $().ready ->
       window.JST = {} # Required or JST will crash (ñapa)

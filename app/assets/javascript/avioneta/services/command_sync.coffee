@@ -1,6 +1,6 @@
-define ['avioneta/services/modules'], (Modules) ->
+define ['avioneta/services/modules', 'configuration'], (Modules, Configuration) ->
   class Modules.CommandSync
-    SERVER_URL = "ws://localhost:8080"
+    SERVER_URL = Configuration.avioneta.websockets.url
 
     @init : ->
       @_connection()
