@@ -1,0 +1,57 @@
+body {
+  background-color: #333333;
+  color: #ddd; }
+
+.container {
+  margin: 5px 0 0 30px; }
+
+.logo {
+  font-size: 50px; }
+  .logo .plane-as-t {
+    margin: 10px 6px 10px 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45); }
+
+.scoreboard {
+  float: right;
+  margin: 10px 30px 0 0;
+  display: flex;
+  flex-direction: column; }
+  .scoreboard .scoreboard-item {
+    width: 300px;
+    font-family: 'Black Ops One', cursive;
+    font-size: 18px;
+    padding: 5px 10px 0 10px;
+    margin-bottom: 4px;
+    color: #222; }
+    .scoreboard .scoreboard-item.local {
+      order: 1;
+      background-color: #d0e7ff; }
+    .scoreboard .scoreboard-item.remote {
+      order: 2;
+      background-color: #fde7ad; }
+
+.gui {
+  float: left; }
+
+.canvases {
+  position: relative;
+  width: 800px;
+  height: 400px; }
+
+canvas {
+  position: absolute; }
+  canvas .main-canvas {
+    z-index: 10; }
+  canvas .background-canvas {
+    z-index: -10; }
+
+.controls {
+  font-size: 17px;
+  margin-top: 10px;
+  text-align: center; }
+  .controls .key {
+    font-weight: bold; }
+
+img[data-behaviour~=image-resource] {
+  display: none; }
