@@ -3,6 +3,7 @@ spec/javascripts/*
 !spec/javascripts/helpers/
 !spec/javascripts/support/
 public/assets/*
+!public/assets/images/
 !public/assets/require.js
 node_modules/
 build/
