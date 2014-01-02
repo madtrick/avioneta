@@ -1,3 +1,5 @@
+[![Analytics](https://ga-beacon.appspot.com/UA-46795389-1/avioneta/README)](https://github.com/igrigorik/ga-beacon)
+
 #AVIONETA
 
 A networked javascript game.
