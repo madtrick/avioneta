@@ -1,6 +1,7 @@
+$light-gray : #ddd;
+
 body {
   background-color : #333333;
-  color: #ddd;
 }
 
 .container {
@@ -8,6 +9,7 @@ body {
 }
 
 .logo {
+  color : $light-gray;
   font-size : 50px;
 
   .plane-as-t {
@@ -68,7 +70,8 @@ canvas {
 }
 
 .controls {
-  font-size : 17px;
+  color      : $light-gray;
+  font-size  : 17px;
   margin-top : 10px;
   text-align : center;
 
