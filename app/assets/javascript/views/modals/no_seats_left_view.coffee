@@ -7,10 +7,9 @@ define [
 
   class Modules.NoSeatsLeftView extends Base
     modalizable :
-      header : "No seats left on this game"
+      header : "Game is full"
       buttons :
-        save: text: "Yes", cb: "_handleOk"
-        cancel : text: "No", cb: "_handleCancel"
+        save: text: "ok", cb: "_handleOk"
 
     render : ->
       @$el.html template()
