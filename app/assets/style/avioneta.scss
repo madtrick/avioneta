@@ -1,23 +1,64 @@
 $light-gray : #ddd;
+$navy-blue  : #000099;
 
 body {
   background-color : #333333;
 }
 
-.container {
-  margin : 5px 0 0 30px;
+.header {
+  background : white;
+  .logo {
+    margin : 0 auto;
+    overflow : auto;
+    width : 440px;
+    .name {
+      color : $light-gray;
+      font-family : 'Black Ops One', cursive;
+      font-size : 50px;
+      float : left;
+      margin : 0 17px;
+    }
+
+    .roundel {
+      position : relative;
+      float : left;
+
+      .rectangle {
+        width      : 68;
+        height     : 15px;
+        background : $navy-blue;
+        margin     : 26px 0;
+      }
+
+      .circle {
+        font-size : 17px;
+        position  : absolute;
+        top       : 10px;
+        left      : 12px;
+
+        .fa-circle {
+          color : $navy-blue;
+        }
+        .fa-star {
+          font-size : 35px;
+        }
+      }
+    }
+
+    .stripes {
+      float :left;
+      width : 40px;
+      .stripe {
+        background : red;
+        margin-top : 2px;
+        height : 10px;
+      }
+    }
+  }
 }
 
-.logo {
-  color : $light-gray;
-  font-size : 50px;
-
-  .plane-as-t {
-    margin : 10px 6px 10px 6px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45);
-  }
-
+.container {
+  margin : 5px 0 0 30px;
 }
 
 .scoreboard {
