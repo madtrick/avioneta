@@ -1,5 +1,5 @@
 $light-gray : #ddd;
-$navy-blue  : #000099;
+$pastel-blue  : #666699;
 
 body {
   background : #33CC99;
@@ -26,7 +26,7 @@ body {
       .rectangle {
         width      : 68;
         height     : 15px;
-        background : $navy-blue;
+        background : $pastel-blue;
         margin     : 26px 0;
       }
 
@@ -37,7 +37,7 @@ body {
         left      : 12px;
 
         .fa-circle {
-          color : $navy-blue;
+          color : $pastel-blue;
         }
         .fa-star {
           font-size : 35px;
