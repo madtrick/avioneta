@@ -1,5 +1,19 @@
 $light-gray : #ddd;
 $pastel-blue  : #666699;
+$footer-height : 200px;
+
+/* CSS to stick footer to the bottom*/
+/* css-tricks.com/snippets/css/sticky-footer/*/
+* {
+  margin : 0;
+}
+
+html, body {
+  height : 100%
+}
+/* End css to stick footer*/
+
+
 
 body {
   background : #33CC99;
@@ -50,12 +64,70 @@ body {
 
 .container {
   margin-top : 30px;
+
+  /* CSS to stick footer to the bottom*/
+  /* css-tricks.com/snippets/css/sticky-footer/ */
+
+  min-height : 100%;
+  margin-bottom : -$footer-height;
+
+  &:after {
+    content : "";
+    display : block;
+    height  : $footer-height;
+  }
+
+  /* End css to stick footer*/
 }
+
 
 .main {
   margin : 0 auto;
   width : 1200px;
   overflow : auto;
+}
+
+.footer {
+  /* CSS to stick footer to the bottom*/
+  /* css-tricks.com/snippets/css/sticky-footer/*/
+
+  height : $footer-height;
+
+  /* End css to stick footer*/
+
+  background : #fffeee;
+
+  .wrapper {
+    width : 850px;
+    margin : 0 auto;
+    padding-top : 25px;
+  /*border : 1px solid red;*/
+  /*overflow : auto;*/
+
+    .about {
+      float : left;
+    }
+
+    .github {
+      /*border : 1px solid green;*/
+      width : 400px;
+      float : right;
+
+      img {
+        float : left;
+        margin-right : 35px;
+      }
+
+      .repositories {
+        float : left;
+        ul {
+          /*border : 1px solid blue;*/
+          padding-left : 28px;
+        }
+      }
+    }
+  }
+
 }
 
 .scoreboard {
