@@ -19,7 +19,7 @@ body {
   background : #33CC99;
 }
 
-.header {
+body > .header {
   background : white;
   border-bottom :3px solid #669999;
   .logo {
@@ -137,18 +137,24 @@ body {
 }
 
 .scoreboard {
-  float : right;
-  margin : 10px 30px 0 0;
-  display : flex;
+  float          : right;
+  display        : flex;
   flex-direction : column;
 
+  & > .header {
+    background    : white;
+    margin-bottom : 5px;
+    text-align    : center;
+    font-size     : 24px;
+  }
+
   .scoreboard-item {
-    width : 300px;
+    width       : 300px;
     font-family : 'Black Ops One', cursive;
-    font-size : 18px;
-    padding : 5px 10px 0 10px;
-    margin-bottom: 4px;
-    color : #222;
+    font-size   : 18px;
+    padding     : 5px 10px 10px 10px;
+    color       : #222;
+    margin-top  : 8px;
 
     &.local {
       order : 1;
@@ -159,7 +165,17 @@ body {
       order : 2;
       background-color: #fde7ad;
     }
+
+    /* 
+      Tweak bootstrap's progress class
+      so it doesn't have a margin under the elements
+      with this class
+      */
+    .progress {
+      margin-bottom : 0;
+    }
   }
+
 }
 
 .gui {

@@ -4,5 +4,5 @@ define [
   'views/scoreboard'
   ], (PlayerDestroyedView, NoSeatsLeftView, Scoreboard) ->
     playerDestroyed : new PlayerDestroyedView()
-    scoreboard : new Scoreboard(el : '.scoreboard')
+    scoreboard : new Scoreboard(el : '.scoreboard .items')
     noSeatsLeft : new NoSeatsLeftView()
