@@ -1,35 +1,123 @@
+/* CSS to stick footer to the bottom*/
+/* css-tricks.com/snippets/css/sticky-footer/*/
+* {
+  margin: 0; }
+
+html, body {
+  height: 100%; }
+
+/* End css to stick footer*/
 body {
-  background-color: #333333;
-  color: #ddd; }
+  background: #33CC99; }
+
+body > .header {
+  background: white;
+  border-bottom: 3px solid #669999; }
+  body > .header .logo {
+    margin: 0 auto;
+    overflow: auto;
+    width: 440px; }
+    body > .header .logo .name {
+      color: #dddddd;
+      font-family: 'Black Ops One', cursive;
+      font-size: 50px;
+      float: left;
+      margin: 0 17px; }
+    body > .header .logo .roundel {
+      position: relative;
+      float: left; }
+      body > .header .logo .roundel .rectangle {
+        width: 68;
+        height: 15px;
+        background: #666699;
+        margin: 26px 0; }
+      body > .header .logo .roundel .circle {
+        font-size: 17px;
+        position: absolute;
+        top: 10px;
+        left: 12px; }
+        body > .header .logo .roundel .circle .fa-circle {
+          color: #666699; }
+        body > .header .logo .roundel .circle .fa-star {
+          font-size: 35px; }
 
 .container {
-  margin: 5px 0 0 30px; }
+  margin-top: 70px;
+  /* CSS to stick footer to the bottom*/
+  /* css-tricks.com/snippets/css/sticky-footer/ */
+  min-height: 100%;
+  margin-bottom: -200px;
+  /* End css to stick footer*/ }
+  .container:after {
+    content: "";
+    display: block;
+    height: 200px; }
 
-.logo {
-  font-size: 50px; }
-  .logo .plane-as-t {
-    margin: 10px 6px 10px 6px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45); }
+.main {
+  margin: 0 auto;
+  width: 1200px;
+  overflow: auto; }
+
+.footer {
+  /* CSS to stick footer to the bottom*/
+  /* css-tricks.com/snippets/css/sticky-footer/*/
+  height: 200px;
+  /* End css to stick footer*/
+  background: #fffeee;
+  border-top: 5px solid #bbbbbb;
+  font-size: 16px; }
+  .footer h3, .footer p, .footer a {
+    color: #CC6666; }
+  .footer .wrapper {
+    width: 850px;
+    margin: 0 auto;
+    padding-top: 25px;
+    /*border : 1px solid red;*/
+    /*overflow : auto;*/ }
+    .footer .wrapper .about {
+      float: left; }
+    .footer .wrapper .github {
+      /*border : 1px solid green;*/
+      width: 400px;
+      float: right; }
+      .footer .wrapper .github img {
+        float: left;
+        margin: 12px 15px 0px 0px; }
+      .footer .wrapper .github .repositories {
+        float: left; }
+        .footer .wrapper .github .repositories ul {
+          /*border : 1px solid blue;*/
+          padding-left: 28px; }
 
 .scoreboard {
   float: right;
-  margin: 10px 30px 0 0;
   display: flex;
   flex-direction: column; }
+  .scoreboard > .header {
+    background: white;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 24px; }
   .scoreboard .scoreboard-item {
     width: 300px;
     font-family: 'Black Ops One', cursive;
     font-size: 18px;
-    padding: 5px 10px 0 10px;
-    margin-bottom: 4px;
-    color: #222; }
+    padding: 5px 10px 10px 10px;
+    color: #222;
+    margin-top: 8px;
+    /* 
+      Tweak bootstrap's progress class
+      so it doesn't have a margin under the elements
+      with this class
+      */ }
     .scoreboard .scoreboard-item.local {
       order: 1;
       background-color: #d0e7ff; }
     .scoreboard .scoreboard-item.remote {
       order: 2;
       background-color: #fde7ad; }
+    .scoreboard .scoreboard-item .progress {
+      margin-bottom: 0; }
 
 .gui {
   float: left; }
@@ -47,6 +135,7 @@ canvas {
     z-index: -10; }
 
 .controls {
+  color: #dddddd;
   font-size: 17px;
   margin-top: 10px;
   text-align: center; }
