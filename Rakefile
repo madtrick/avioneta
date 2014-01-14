@@ -8,6 +8,19 @@ rescue LoadError
   end
 end
 
+namespace :github do
+  task :deploy do
+    sh 'git co gh-pages'
+    sh 'cp -R build/assets/ assets/'
+    sh 'cp build/index.html index.html'
+    sh 'git add .'
+    sh 'git commit -m "New version for github pages"'
+    sh 'git push github gh-pages'
+    sh 'git co master'
+    sh 'rm assets/'
+  end
+end
+
 namespace :assets do
   #
   # This variables have to be defined as constants to
