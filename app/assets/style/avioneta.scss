@@ -1,38 +1,160 @@
 $light-gray : #ddd;
+$pastel-blue  : #666699;
+$footer-height : 200px;
+
+/* CSS to stick footer to the bottom*/
+/* css-tricks.com/snippets/css/sticky-footer/*/
+* {
+  margin : 0;
+}
+
+html, body {
+  height : 100%
+}
+/* End css to stick footer*/
+
+
 
 body {
-  background-color : #333333;
+  background : #33CC99;
+}
+
+body > .header {
+  background : white;
+  border-bottom :3px solid #669999;
+  .logo {
+    margin : 0 auto;
+    overflow : auto;
+    width : 440px;
+    .name {
+      color : $light-gray;
+      font-family : 'Black Ops One', cursive;
+      font-size : 50px;
+      float : left;
+      margin : 0 17px;
+    }
+
+    .roundel {
+      position : relative;
+      float : left;
+
+      .rectangle {
+        width      : 68;
+        height     : 15px;
+        background : $pastel-blue;
+        margin     : 26px 0;
+      }
+
+      .circle {
+        font-size : 17px;
+        position  : absolute;
+        top       : 10px;
+        left      : 12px;
+
+        .fa-circle {
+          color : $pastel-blue;
+        }
+        .fa-star {
+          font-size : 35px;
+        }
+      }
+    }
+
+  }
 }
 
 .container {
-  margin : 5px 0 0 30px;
+  margin-top : 70px;
+
+  /* CSS to stick footer to the bottom*/
+  /* css-tricks.com/snippets/css/sticky-footer/ */
+
+  min-height : 100%;
+  margin-bottom : -$footer-height;
+
+  &:after {
+    content : "";
+    display : block;
+    height  : $footer-height;
+  }
+
+  /* End css to stick footer*/
 }
 
-.logo {
-  color : $light-gray;
-  font-size : 50px;
 
-  .plane-as-t {
-    margin : 10px 6px 10px 6px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45);
+.main {
+  margin : 0 auto;
+  width : 1200px;
+  overflow : auto;
+}
+
+.footer {
+  /* CSS to stick footer to the bottom*/
+  /* css-tricks.com/snippets/css/sticky-footer/*/
+
+  height : $footer-height;
+
+  /* End css to stick footer*/
+
+  background : #fffeee;
+  border-top : 5px solid #bbbbbb;
+  font-size : 16px;
+  h3, p, a{
+    color : #CC6666;
+  }
+
+  .wrapper {
+    width : 850px;
+    margin : 0 auto;
+    padding-top : 25px;
+  /*border : 1px solid red;*/
+  /*overflow : auto;*/
+
+    .about {
+      float : left;
+    }
+
+    .github {
+      /*border : 1px solid green;*/
+      width : 400px;
+      float : right;
+
+      img {
+        float : left;
+        margin : 12px 15px 0px 0px;
+      }
+
+      .repositories {
+        float : left;
+        ul {
+          /*border : 1px solid blue;*/
+          padding-left : 28px;
+        }
+      }
+    }
   }
 
 }
 
 .scoreboard {
-  float : right;
-  margin : 10px 30px 0 0;
-  display : flex;
+  float          : right;
+  display        : flex;
   flex-direction : column;
 
+  & > .header {
+    background    : white;
+    margin-bottom : 5px;
+    text-align    : center;
+    font-size     : 24px;
+  }
+
   .scoreboard-item {
-    width : 300px;
+    width       : 300px;
     font-family : 'Black Ops One', cursive;
-    font-size : 18px;
-    padding : 5px 10px 0 10px;
-    margin-bottom: 4px;
-    color : #222;
+    font-size   : 18px;
+    padding     : 5px 10px 10px 10px;
+    color       : #222;
+    margin-top  : 8px;
 
     &.local {
       order : 1;
@@ -43,7 +165,17 @@ body {
       order : 2;
       background-color: #fde7ad;
     }
+
+    /* 
+      Tweak bootstrap's progress class
+      so it doesn't have a margin under the elements
+      with this class
+      */
+    .progress {
+      margin-bottom : 0;
+    }
   }
+
 }
 
 .gui {
