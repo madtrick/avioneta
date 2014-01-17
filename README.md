@@ -2,28 +2,29 @@
 
 #AVIONETA
 
-A networked javascript game.
+Frontend of the game [Avioneta](https://madtrick.github.io/avioneta)
 
-###Author
+##About the game
+
+Avioneta is a multiplayer game where players fight to destroy its opponents. The game runs in the browser using HTML5 technologies like WebSockets and Canvas.
+
+The game is architectured in a client-server fashion where the [client](https://github.com/madtrick/avioneta) send commands to the [server](https://github.com/madtrick/avioneta-server) to update the game state.
+
+The code for the server of the game is on this other repository: [https://github.com/madtrick/avioneta-server](https://github.com/madtrick/avioneta-server)
+
+##About the frontend
+The frontend reacts to user actions updating its game state, redrawing the game-world and sending the user actions to the server encapsulated as commands.
+
+The frontend does not use any framework or game engine to do the rendering, game state handling or other gaming related actions. Everything was built from scratch just as a pedagogical experience for myself.
+  
+##Author
 
 This game was developed by Farruco Sanjurjo. You can find me:
 
   * On Twitter [@madtrick](https://twitter.com/madtrick)
   * Email [madtrick@gmail.com](madtrick@gmail.com)
 
-###Third party tools, resources, libraries, etc.
-
-  * [jQuery](http://jquery.com/)
-  * [Require.js](http://requirejs.org/)
-  * [Google fonts](http://www.google.com/fonts)
-  * [Twitter bootstrap](http://getbootstrap.com/)
-  * [Fontawesome](http://fontawesome.io/)
-  * [Underscore](http://underscorejs.org/)
-  * [Backbone](http://backbonejs.org/)
-  * [Microevent](http://notes.jetienne.com/2011/03/22/microeventjs.html)
-  * [Bootbox](https://github.com/makeusabrew/bootbox)
-
-###License
+##License
 Copyright [2013] [Farruco Sanjurjo Arcay]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
