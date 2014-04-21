@@ -17,7 +17,7 @@ namespace :github do
     sh 'git commit -m "New version for github pages"'
     sh 'git push github gh-pages'
     sh 'git co master'
-    sh 'rm assets/'
+    sh 'rm -rf assets/'
   end
 end
 
