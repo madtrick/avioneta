@@ -48,11 +48,11 @@ define [
 
         if input.isDown 'S'
           actions.push new @movePlayerAction player : player.id, direction : "down"
-        else if input.isDown 'W'
+        else if input.isDown 'A'
           actions.push new @movePlayerAction player : player.id, direction : "up"
 
 
-      if (input.isDown('SPACE') and (time - player.previousShot > player.shotTreshold or (player.previousShot is undefined))) 
+      if (input.isDown('D') and (time - player.previousShot > player.shotTreshold or (player.previousShot is undefined))) 
         player.previousShot = time
         actions.push new @shootPlayerAction player : player.id
 
